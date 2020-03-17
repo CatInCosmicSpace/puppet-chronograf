@@ -1,0 +1,7 @@
+---
+# - Merge behavior settings ----------------------------------------------------
+chronograf::lookup_options:
+  gpg_keys:
+    merge: deep
+  repositories:
+    merge: deep

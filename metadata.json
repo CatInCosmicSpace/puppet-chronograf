@@ -1,0 +1,55 @@
+{
+  "name": "uwoth-chronograf",
+  "version": "0.1.0",
+  "author": "uwoth",
+  "summary": "",
+  "license": "Apache-2.0",
+  "source": "https://github.com/kogitoapp/puppet-chronograf",
+  "dependencies": [
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": ">= 2.0.0 < 8.0.0"
+    },
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 5.0.0 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.25.0 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs/translate",
+      "version_requirement": ">= 1.0.0 < 3.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "18.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+    }
+  ],
+  "pdk-version": "1.17.0",
+  "template-url": "pdk-default#1.17.0",
+  "template-ref": "tags/1.17.0-0-gd3a4319"
+}

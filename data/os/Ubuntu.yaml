@@ -1,0 +1,25 @@
+---
+# - GPG key resource and resource-----------------------------------------------
+chronograf::key_resource: 'apt::key'
+chronograf::resource: 'apt::source'
+chronograf::repos_location: 'https://repos.influxdata.com/ubuntu'
+
+# - APT gpg key ----------------------------------------------------------------
+chronograf::gpg_keys:
+  "%{lookup('chronograf::software')}":
+    ensure: "%{lookup('chronograf::gpg_manage')}"
+    id: "%{lookup('chronograf::gpg_id')}"
+    server: "%{lookup('chronograf::gpg_server')}"
+    source: "%{lookup('chronograf::gpg_source')}"
+
+# - APT repository settings ----------------------------------------------------
+chronograf::repositories:
+  "%{lookup('chronograf::software')}":
+    ensure: "%{lookup('chronograf::repos_manage')}"
+    comment: "%{lookup('chronograf::repos_comment')}"
+    location: "%{lookup('chronograf::repos_location')}"
+    release: '%{::os.distro.codename}'
+    repos: "%{lookup('chronograf::repos')}"
+    include:
+      src: "%{lookup('chronograf::repos_src')}"
+      deb: "%{lookup('chronograf::repos_bin')}"
