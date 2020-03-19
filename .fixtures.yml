@@ -12,8 +12,8 @@ fixtures:
     translate:
       repo: 'puppetlabs/translate'
       ref: '2.1.0'
-    concat:
-      repo: 'puppetlabs/concat'
-      ref: '6.2.0'
+    yumrepo_core:
+      repo: 'puppetlabs/yumrepo_core'
+      ref: '1.0.6'
   symlinks:
     chronograf: '#{source_dir}'

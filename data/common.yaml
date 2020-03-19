@@ -11,6 +11,7 @@ chronograf::repos_src: false
 chronograf::repos_bin: true
 chronograf::repos_gpgcheck: '1'
 chronograf::repos_enable: '1'
+chronograf::manage_repo: true
 
 # - GPG settings ---------------------------------------------------------------
 chronograf::gpg_manage: 'present'
@@ -43,9 +44,10 @@ chronograf::service_enable: true
 chronograf::service_has_status: true
 chronograf::service_has_restart: true
 
+# Systemd parameters
 chronograf::host: '0.0.0.0'
 chronograf::port: '8888'
-chronograf::bolt__path: '/var/lib/chronograf/chronograf-v1.db'
+chronograf::bolt_path: '/var/lib/chronograf/chronograf-v1.db'
 chronograf::canned_path: '/usr/share/chronograf/canned'
 chronograf::protoboards_path: '/usr/share/chronograf/protoboards'
 chronograf::resources_path: '/usr/share/chronograf/resources'

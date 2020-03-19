@@ -20,6 +20,7 @@ class chronograf (
   Boolean $repos_bin = true,
   Enum['1', '0'] $repos_gpgcheck = '1',
   Enum['1', '0'] $repos_enable = '1',
+  Boolean $manage_repo = true,
 
   String $package= 'chronograf',
   Enum['present', 'absent'] $package_manage= 'present',
@@ -48,7 +49,7 @@ class chronograf (
 
   String $host = '0.0.0.0',
   String $port = '8888',
-  String $bolt__path ='/var/lib/chronograf/chronograf-v1.db',
+  String $bolt_path ='/var/lib/chronograf/chronograf-v1.db',
   String $canned_path = '/usr/share/chronograf/canned',
   String $protoboards_path = '/usr/share/chronograf/protoboards',
   String $resources_path = '/usr/share/chronograf/resources',
