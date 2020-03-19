@@ -24,11 +24,6 @@ chronograf::user_manage: 'present'
 chronograf::user_system: true
 chronograf::user_manage_home: true
 chronograf::user_home: '/var/lib/'
-chronograf::configuration_path: '/etc/chronograf'
-chronograf::configuration_path_manage: 'directory'
-chronograf::configuration_file: 'chronograf.conf'
-chronograf::configuration_file_manage: 'present'
-chronograf::configuration_template: 'chronograf/chronograf.conf.erb'
 chronograf::service_defaults: '/etc/default/chronograf'
 chronograf::service_defaults_manage: 'present'
 chronograf::service_default_template: 'chronograf/service-defaults.erb'

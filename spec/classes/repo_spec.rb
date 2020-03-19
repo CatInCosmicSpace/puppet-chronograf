@@ -3,9 +3,14 @@
 require 'spec_helper'
 
 describe 'chronograf::repo' do
-  on_supported_os.each do |os, os_facts|
-    context "on #{os}" do
-      let(:facts) { os_facts }
+  on_supported_os.each do
+    context 'with all defaults' do
+      let :params do
+        {
+          key_resource: '',
+          resource: '',
+        }
+      end
 
       it { is_expected.to compile }
     end

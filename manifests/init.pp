@@ -5,11 +5,11 @@
 class chronograf (
   String $key_resource = '',
   String $resource = '',
-  String $software = 'chronograf',
+  String $software = 'influxdata',
   Enum['present', 'absent'] $gpg_manage = 'present',
   String $gpg_id = '05CE15085FC09D18E99EFB22684A14CF2582E0C5',
   String $gpg_server = 'eu.pool.sks-keyservers.net',
-  String $gpg_source = 'https://repos.influxdata.com/.influxdbkey',
+  String $gpg_source = 'https://repos.influxdata.com/.influxdb.key',
 
   Enum['present', 'absent'] $repository_manage = 'present',
   String $repos_comment = 'Chronograf repository',
@@ -33,11 +33,6 @@ class chronograf (
   Boolean $user_manage_home = true,
   String $user_home = '/var/lib/',
 
-  String $configuration_path = '/etc/chronograf',
-  Enum['directory', 'absent'] $configuration_path_manage = 'directory',
-  String $configuration_file = 'chronograf.conf',
-  Enum['present', 'absent'] $configuration_file_manage = 'present',
-  String $configuration_template= 'chronograf/chronograf.conf.erb',
   String $service_defaults = '/etc/default/chronograf',
   Enum['present', 'absent'] $service_defaults_manage = 'present',
   String $service_default_template = 'chronograf/service-defaults.erb',
@@ -50,12 +45,23 @@ class chronograf (
   Boolean $service_enable = true,
   Boolean $service_has_status = true,
   Boolean $service_has_restart = true,
+
+  String $host = '0.0.0.0',
+  String $port = '8888',
+  String $bolt__path ='/var/lib/chronograf/chronograf-v1.db',
+  String $canned_path = '/usr/share/chronograf/canned',
+  String $protoboards_path = '/usr/share/chronograf/protoboards',
+  String $resources_path = '/usr/share/chronograf/resources',
+  String $basepath = '',
+  String $status_feed_url = 'https://www.influxdata.com/feed/json',
+
 ){
 
   include ::chronograf::repo
   include ::chronograf::install
+  include ::chronograf::config
   contain ::chronograf::service
 
   Class['chronograf::repo'] ~> Class['chronograf::install']
-  Class['chronograf::install'] ~> Class['chronograf::service']
+  Class['chronograf::install'] ~> Class['chronograf::config', 'chronograf::service']
 }

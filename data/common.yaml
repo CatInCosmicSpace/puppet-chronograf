@@ -1,6 +1,6 @@
 ---
 # - Resources ------------------------------------------------------------------
-chronograf::software: 'chronograf'
+chronograf::software: 'influxdata'
 chronograf::key_resource: ''
 chronograf::resource: ''
 chronograf::repos_manage: 'present'
@@ -16,13 +16,13 @@ chronograf::repos_enable: '1'
 chronograf::gpg_manage: 'present'
 chronograf::gpg_id: '05CE15085FC09D18E99EFB22684A14CF2582E0C5'
 chronograf::gpg_server: 'eu.pool.sks-keyservers.net'
-chronograf::gpg_source: 'https://repos.influxdata.com/chronograf.key'
+chronograf::gpg_source: 'https://repos.influxdata.com/influxdb.key'
 
 # - Package settings -----------------------------------------------------------
 chronograf::package: 'chronograf'
 chronograf::package_manage: 'present'
 
-# - Influxdb settings ----------------------------------------------------------
+# - Chronograf settings ----------------------------------------------------------
 chronograf::group: 'chronograf'
 chronograf::group_manage: 'present'
 chronograf::group_system: true
@@ -30,11 +30,6 @@ chronograf::user: 'chronograf'
 chronograf::user_system: true
 chronograf::user_manage: 'present'
 chronograf::user_home: '/var/lib/'
-chronograf::configuration_path: '/etc/chronograf'
-chronograf::configuration_path_manage: 'directory'
-chronograf::configuration_file: 'chronograf.conf'
-chronograf::configuration_file_manage: 'present'
-chronograf::configuration_template: 'chronograf/chronograf.conf.erb'
 chronograf::service_defaults: '/etc/default/chronograf'
 chronograf::service_defaults_manage: 'present'
 chronograf::service_default_template: 'chronograf/service-defaults.erb'
@@ -47,6 +42,15 @@ chronograf::service_definition_template: 'chronograf/systemd.service.erb'
 chronograf::service_enable: true
 chronograf::service_has_status: true
 chronograf::service_has_restart: true
+
+chronograf::host: '0.0.0.0'
+chronograf::port: '8888'
+chronograf::bolt__path: '/var/lib/chronograf/chronograf-v1.db'
+chronograf::canned_path: '/usr/share/chronograf/canned'
+chronograf::protoboards_path: '/usr/share/chronograf/protoboards'
+chronograf::resources_path: '/usr/share/chronograf/resources'
+chronograf::basepath: ''
+chronograf::status_feed_url: 'https://www.influxdata.com/feed/json'
 
 # - Merge behavior settings ----------------------------------------------------
 chronograf::lookup_options:
