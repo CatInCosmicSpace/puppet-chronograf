@@ -20,7 +20,7 @@ class chronograf (
   Boolean $repos_bin = true,
   Enum['1', '0'] $repos_gpgcheck = '1',
   Enum['1', '0'] $repos_enable = '1',
-  Boolean $manage_repo = true,
+  Boolean $manage_repo = false,
 
   String $package= 'chronograf',
   Enum['present', 'absent'] $package_manage= 'present',

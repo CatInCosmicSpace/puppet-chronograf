@@ -11,7 +11,7 @@ chronograf::repos_src: false
 chronograf::repos_bin: true
 chronograf::repos_gpgcheck: '1'
 chronograf::repos_enable: '1'
-chronograf::manage_repo: true
+chronograf::manage_repo: false
 
 # - GPG settings ---------------------------------------------------------------
 chronograf::gpg_manage: 'present'
