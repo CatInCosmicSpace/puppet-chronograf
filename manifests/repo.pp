@@ -5,7 +5,7 @@
 class chronograf::repo (
   String $key_resource = $chronograf::key_resource,
   String $resource = $chronograf::resource,
-  Boolean $manage_repo = $influxdb::manage_repo,
+  Boolean $manage_repo = $chronograf::manage_repo,
 ){
   if $manage_repo {
 
