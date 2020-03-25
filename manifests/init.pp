@@ -73,13 +73,13 @@ class chronograf (
   Class['chronograf::install'] ~> Class['chronograf::config', 'chronograf::service']
 
   $influx_connections.each | $connection, $connection_config | {
-    chronograf::influx { $connection:
+    chronograf::connection::influx { $connection:
       * => $connection_config,
     }
   }
 
   $kapacitor_connections.each | $connection, $connection_config | {
-    chronograf::kapacitor { $connection:
+    chronograf::connection::kapacitor { $connection:
       * => $connection_config,
     }
   }

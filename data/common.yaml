@@ -66,8 +66,8 @@ chronograf::influx_connections:
     password: 'test'
     url: 'http://localhost:8086'
     type: 'influx'
-    Boolean $insecure_skip_verify: false
-    Boolean $default: true
+    insecure_skip_verify: false
+    default: true
     telegraf: 'telegraf'
     organization: 'example_org'
 

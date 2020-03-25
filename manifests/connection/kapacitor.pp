@@ -3,8 +3,8 @@
 # A description of what this defined type does
 #
 # @example
-#   chronograf::kapacitor { 'connection': }
-define chronograf::kapacitor (
+#   chronograf::connection::kapacitor { 'connection': }
+define chronograf::connection::kapacitor (
   String $connection = $title,
   Enum['present', 'absent'] $ensure = 'present',
   String $id = '10000',

@@ -3,8 +3,8 @@
 # A description of what this defined type does
 #
 # @example
-#   chronograf::influx { 'connection': }
-define chronograf::influx (
+#   chronograf::connection::influx { 'connection': }
+define chronograf::connection::influx (
   String $connection = $title,
   Enum['present', 'absent'] $ensure = 'present',
   String $id = '10000',
