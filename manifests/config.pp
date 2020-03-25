@@ -9,6 +9,8 @@ class chronograf::config (
   String $service_definition = $chronograf::service_definition,
   Enum['present', 'absent'] $service_definition_manage = $chronograf::service_definition_manage,
   String $service_definition_template = $chronograf::service_definition_template,
+  String $resources_path = $chronograf::resources_path,
+  Enum['directory', 'absent'] $resources_path_manage = $chronograf::resources_path_manage,
 ){
 
   file { $service_defaults:
@@ -26,4 +28,12 @@ class chronograf::config (
       mode    => '0644',
       content => template($service_definition_template),
   }
+
+file { $resources_path:
+  ensure => $resources_path_manage,
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 }

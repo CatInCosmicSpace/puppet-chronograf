@@ -1,0 +1,12 @@
+{
+    "id": "<%= scope.lookupvar("chronograf::id") %>",
+    "name": "<%= scope.lookupvar("chronograf::connection") %>",
+    "username": "<%= scope.lookupvar("chronograf::username") %>",
+    "password": "<%= scope.lookupvar("chronograf::password") %>",
+    "url": "<%= scope.lookupvar("chronograf::url") %>",
+    "type": "<%= scope.lookupvar("chronograf::type") %>",,
+    "insecureSkipVerify": <%= scope.lookupvar("chronograf::insecure_skip_verify") %>,
+    "default": <%= scope.lookupvar("chronograf::default") %>,
+    "telegraf": "<%= scope.lookupvar("chronograf::telegraf") %>",
+    "organization": "<%= scope.lookupvar("chronograf::organization") %>",
+}

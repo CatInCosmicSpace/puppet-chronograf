@@ -13,7 +13,7 @@ class chronograf (
 
   Enum['present', 'absent'] $repository_manage = 'present',
   String $repos_comment = 'Chronograf repository',
-  String $repos_location = 'https://repos.influxdata.com/ubuntu/pool/stable/c/chronograf/',
+  String $repos_location = 'https://repos.influxdata.com/ubuntu',
   String $repos_release ='%{::os.distro.codename}',
   String $repos = 'stable',
   Boolean $repos_src = false,
@@ -56,6 +56,12 @@ class chronograf (
   String $basepath = '',
   String $status_feed_url = 'https://www.influxdata.com/feed/json',
 
+  Enum['directory', 'absent'] $resources_path_manage = 'directory',
+  Hash $influx_connections = {},
+  String $influx_connection_template = 'chronograf/influx_connection.erb',
+  Hash $kapacitor_connections = {},
+  String $kapacitor_connection_template = 'chronograf/kapacitor_connection.erb',
+
 ){
 
   include ::chronograf::repo
@@ -65,4 +71,16 @@ class chronograf (
 
   Class['chronograf::repo'] ~> Class['chronograf::install']
   Class['chronograf::install'] ~> Class['chronograf::config', 'chronograf::service']
+
+  $influx_connections.each | $connection, $connection_config | {
+    chronograf::influx { $connection:
+      * => $connection_config,
+    }
+  }
+
+  $kapacitor_connections.each | $connection, $connection_config | {
+    chronograf::kapacitor { $connection:
+      * => $connection_config,
+    }
+  }
 }
