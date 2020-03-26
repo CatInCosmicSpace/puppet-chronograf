@@ -17,7 +17,7 @@ define chronograf::connection::influx (
   String $telegraf = 'telegraf',
   String $organization = 'example_org',
   String $connection_template = $chronograf::influx_connection_template,
-  String $resources_path = '/usr/share/chronograf/resources',
+  String $resources_path = $chronograf::resources_path,
 ) {
 
   file { "${resources_path}/${connection}.src":
@@ -26,9 +26,5 @@ define chronograf::connection::influx (
     group   => 'root',
     mode    => '0644',
     content => template($connection_template),
-
-
-
-
-
+  }
 }

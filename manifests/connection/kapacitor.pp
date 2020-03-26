@@ -13,7 +13,7 @@ define chronograf::connection::kapacitor (
   Boolean $active = true,
   String $organization = 'example_org',
   String $connection_template = $chronograf::kapacitor_connection_template,
-  String $resources_path = '/usr/share/chronograf/resources',
+  String $resources_path = $chronograf::resources_path,
 ) {
 
   file { "${resources_path}/${connection}.kap":
@@ -22,5 +22,5 @@ define chronograf::connection::kapacitor (
     group   => 'root',
     mode    => '0644',
     content => template($connection_template),
-
+  }
 }
