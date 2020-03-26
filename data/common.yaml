@@ -59,7 +59,7 @@ chronograf::influx_connection_template: 'chronograf/influx_connection.erb'
 chronograf::kapacitor_connection_template: 'chronograf/kapacitor_connection.erb'
 
 chronograf::influx_connections:
-  'My InfluxDB':
+  MyInfluxDB:
     ensure: 'present'
     id: '10000'
     username: 'test'
@@ -70,15 +70,33 @@ chronograf::influx_connections:
     default: true
     telegraf: 'telegraf'
     organization: 'example_org'
+  My2ndInfluxDB:
+    ensure: 'present'
+    id: '10001'
+    username: 'test1'
+    password: 'test1'
+    url: 'http://localhost:8086'
+    type: 'influx'
+    insecure_skip_verify: false
+    default: true
+    telegraf: 'telegraf1'
+    organization: 'example_org1'
 
 chronograf::kapacitor_connections:
-  'My Kapacitor':
+  MyKapacitor:
     ensure: 'present'
-    id: '10000'
-    src_id: '10000'
+    id: '10010'
+    src_id: '10010'
     url: 'http://localhost:9092'
     active: true
     organization: 'example_org'
+  My2ndKapacitor:
+    ensure: 'present'
+    id: '10011'
+    src_id: '10011'
+    url: 'http://localhost:9092'
+    active: true
+    organization: 'example_org1'
 
 # - Merge behavior settings ----------------------------------------------------
 chronograf::lookup_options:
