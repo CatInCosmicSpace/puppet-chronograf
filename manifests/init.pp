@@ -57,9 +57,9 @@ class chronograf (
   String $status_feed_url = 'https://www.influxdata.com/feed/json',
 
   Enum['directory', 'absent'] $resources_path_manage = 'directory',
-  Hash $influx_connections = {},
+  Hash $connection_influx = {},
   String $influx_connection_template = 'chronograf/influx_connection.erb',
-  Hash $kapacitor_connections = {},
+  Hash $connection_kapacitor = {},
   String $kapacitor_connection_template = 'chronograf/kapacitor_connection.erb',
 
 ){
@@ -72,13 +72,13 @@ class chronograf (
   Class['chronograf::repo'] ~> Class['chronograf::install']
   Class['chronograf::install'] ~> Class['chronograf::config', 'chronograf::service']
 
-  $influx_connections.each | $connection, $connection_config | {
+  $connection_influx.each | $connection, $connection_config | {
     chronograf::connection::influx { $connection:
       * => $connection_config,
     }
   }
 
-  $kapacitor_connections.each | $connection, $connection_config | {
+  $connection_kapacitor.each | $connection, $connection_config | {
     chronograf::connection::kapacitor { $connection:
       * => $connection_config,
     }
