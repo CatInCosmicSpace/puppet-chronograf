@@ -14,7 +14,7 @@ Environment="PORT=<%= scope.lookupvar("chronograf::port") %>"
 Environment="BOLT_PATH=<%= scope.lookupvar("chronograf::bolt_path") %>"
 Environment="CANNED_PATH=<%= scope.lookupvar("chronograf::canned_path") %>"
 Environment="PROTOBOARDS_PATH=<%= scope.lookupvar("chronograf::protoboards_path") %>"
-# Environment="RESOURCES_PATH=<%= scope.lookupvar("chronograf::resources_path") %>"
+Environment="RESOURCES_PATH=<%= scope.lookupvar("chronograf::resources_path") %>"
 # Environment="BASE_PATH=<%= scope.lookupvar("chronograf::basepath") %>"
 # Environment="STATUS_FEED_URL=<%= scope.lookupvar("chronograf::status_feed_url") %>"
 EnvironmentFile=-<%= scope.lookupvar("chronograf::service_defaults") %>
