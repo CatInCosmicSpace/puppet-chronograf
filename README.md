@@ -15,7 +15,7 @@
 
 ## Description
 
-Installs, configures and manages [Chronograf](https://github.com/influxdata/chronograf),the monitoring and visualization UI of the Tick stack.
+Installs, configures and manages [Chronograf](https://github.com/influxdata/chronograf), the monitoring and visualization UI of the Tick stack.
 
 ## Setup
 
@@ -36,7 +36,8 @@ Default configuration
   * /etc/default/chronograf
 
 - starts service "chronograf" immediately
-    service subscribes on "package", "chronograf.service" and "defaults"
+
+- service subscribes to "package", "chronograf.service" and "defaults"
 
 - set up connection to influx and kapacitor upon request, also based on templates
 
