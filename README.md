@@ -1,8 +1,6 @@
-# chronograf
+# Puppet module to manage Chronograf
 
-Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://puppet.com/pdk/latest/pdk_generating_modules.html .
 
-The README template below provides a starting point with details about what information to include in your README.
 
 #### Table of Contents
 
@@ -17,71 +15,143 @@ The README template below provides a starting point with details about what info
 
 ## Description
 
-Briefly tell users why they might want to use your module. Explain what your module does and what kind of problems users can solve with it.
-
-This should be a fairly short description helps the user decide if your module is what they want.
+Installs, configures and manages [Chronograf](https://github.com/influxdata/chronograf),the monitoring and visualization UI of the Tick stack.
 
 ## Setup
 
-### What chronograf affects **OPTIONAL**
+### What chronograf affects
 
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
+Default configuration
 
-If there's more that they should know about, though, this is the place to mention:
+- manages GPG key, repository (use `$manage_repo` to deactivate when another influxdata module takes the lead)
 
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
+- manages package
+
+- manages user and group chronograf
+
+- manages directories and configuration files (referring to templates)
+
+  * /lib/systemd/system/chronograf.service
+
+  * /etc/default/chronograf
+
+- starts service "chronograf" immediately
+    service subscribes on "package", "chronograf.service" and "defaults"
+
+- set up connection to influx and kapacitor upon request, also based on templates
+
+  * /usr/share/chronograf/resources/*
 
 ### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled, another module, etc.), mention it here.
+-   `puppetlabs/apt`
+    version `>= 2.0.0 < 8.0.0`
 
-If your most recent release breaks compatibility or requires particular steps for upgrading, you might want to include an additional "Upgrading" section here.
+-   `puppetlabs/concat`
+    version `>= 5.0.0 < 7.0.0`
+
+-   `puppetlabs/stdlib`
+    version `>= 4.25.0 < 7.0.0`
+
+-   `puppetlabs/translate`
+    version `>= 1.0.0 < 3.0.0`
+
+-   `puppet`
+    version `>= 5.5.8 < 7.0.0`
+
+For an extensive list of requirements, see `metadata.json`.
 
 ### Beginning with chronograf
 
-The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
+The module comes along with several configuration files, which you can find in
+`templates`. Change configuration settings in according Hiera level.
+
+- `service-defaults.erb`
+- `systemd.service.erb`
+
+You will also find in `templates` connection settings to influx and kapacitor.
+Change configuration settings in according Hiera level. Or provide them via a hash.
+
+Please refer to [Chronograf documentation](https://www.influxdata.com/time-series-platform/chronograf/)
+for the defaults used.
 
 ## Usage
 
-Include usage examples for common use cases in the **Usage** section. Show your users how to use your module to solve problems, and be sure to include code examples. Include three to five examples of the most important or common tasks a user can accomplish with your module. Show users how to accomplish more complex tasks that involve different types, classes, and functions working in tandem.
+### Without any connections to influx or kapacitor:
+
+```
+include ::chronograf
+```
+
+### With connections to influx and kapacitor:
+
+```
+class { 'chronograf':
+
+}
+
+chronograf::connection::influx{'MyInfluxDB':
+  ensure               => 'present',
+  id                   => '10000',
+  username             => 'telegraf',
+  password             => 'metricsmetricsmetrics',
+  url                  => 'http://localhost:8086',
+  type                 => 'influx',
+  insecure_skip_verify => false,
+  default              => true,
+  telegraf             => 'telegraf',
+  organization         => 'example_org',
+}
+
+chronograf::connection::kapacitor{'MyKapacitor':
+  ensure       => 'present',
+  id           => '10010',
+  src_id       => '10010',
+  url          => 'http://localhost:9092',
+  active       => true,
+  organization => 'example_org',
+}
+```
+
+### In combination with other influxdata module
+
+* when one of the other influxdata modules already handles GPG keys and repository
+
+```
+class { 'chronograf':
+  manage_repo => false,
+}
+```
+
+* when chronograf shall handle GPG keys and repository
+
+```
+class { 'chronograf':
+  manage_repo => true,
+}
+```
 
 ## Reference
 
-This section is deprecated. Instead, add reference information to your code as Puppet Strings comments, and then use Strings to generate a REFERENCE.md in your module. For details on how to add code comments and generate documentation with Strings, see the Puppet Strings [documentation](https://puppet.com/docs/puppet/latest/puppet_strings.html) and [style guide](https://puppet.com/docs/puppet/latest/puppet_strings_style.html)
-
-If you aren't ready to use Strings yet, manually create a REFERENCE.md in the root of your module directory and list out each of your module's classes, defined types, facts, functions, Puppet tasks, task plans, and resource types and providers, along with the parameters for each.
-
-For each element (class, defined type, function, and so on), list:
-
-  * The data type, if applicable.
-  * A description of what the element does.
-  * Valid values, if the data type doesn't make it obvious.
-  * Default value, if any.
-
-For example:
-
-```
-### `pet::cat`
-
-#### Parameters
-
-##### `meow`
-
-Enables vocalization in your cat. Valid options: 'string'.
-
-Default: 'medium-loud'.
-```
+Please see document `REFERENCE.md`.
 
 ## Limitations
 
-In the Limitations section, list any incompatibilities, known issues, or other warnings.
+   This module uses "Hiera".
+
+   For an extensive list of supported operating systems, see `metadata.json`.
 
 ## Development
 
-In the Development section, tell other users the ground rules for contributing to your project and how they should submit their work.
+-   pdk-version     1.17.0
+-   template-url    pdk-default 1.17.0
+-   template-ref    tags/1.17.0-0-g0bc522e
 
 ## Release Notes/Contributors/Etc. **Optional**
 
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header.
+-   module:     kogitoapp-chronograf
+-   version:    0.1.0
+-   author:     Kogito UG <hello@kogito.network>
+-   summary:    Module for configuring InfluxDB
+-   license:    Apache-2.0
+-   source:     https://github.com/kogitoapp/puppet-chronograf
