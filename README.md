@@ -43,7 +43,7 @@ Default configuration
 
   * /usr/share/chronograf/resources/*
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
 -   `puppetlabs/apt`
     version `>= 2.0.0 < 8.0.0`
@@ -148,11 +148,11 @@ Please see document `REFERENCE.md`.
 -   template-url    pdk-default 1.17.0
 -   template-ref    tags/1.17.0-0-g0bc522e
 
-## Release Notes/Contributors/Etc. **Optional**
+## Release Notes/Contributors/Etc.
 
 -   module:     kogitoapp-chronograf
 -   version:    0.1.0
 -   author:     Kogito UG <hello@kogito.network>
--   summary:    Module for configuring InfluxDB
+-   summary:    Module for configuring Chronograf
 -   license:    Apache-2.0
 -   source:     https://github.com/kogitoapp/puppet-chronograf
