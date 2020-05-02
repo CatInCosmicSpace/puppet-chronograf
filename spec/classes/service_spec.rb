@@ -7,7 +7,21 @@ describe 'chronograf::service' do
     context "on #{os}" do
       let(:facts) { os_facts }
 
-      it { is_expected.to compile }
+      let :params do
+        {
+          service_name: 'chronograf',
+          service_manage: 'running',
+          service_enable: true,
+          service_has_status: true,
+          service_has_restart: true,
+          service_provider: 'systemd',
+          service_definition: '/lib/systemd/system/chronograf.service',
+          service_defaults: '/etc/default/chronograf',
+          package: 'chronograf',
+        }
+      end
+
+      it { is_expected.to compile.with_all_deps }
     end
   end
 end

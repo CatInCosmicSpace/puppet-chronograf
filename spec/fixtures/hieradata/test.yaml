@@ -1,0 +1,13 @@
+---
+chronograf::connection::influx:
+  'MyInfluxDB':
+    ensure: 'present'
+    id: '10000'
+    username: 'telegraf'
+    password: 'metricsmetricsmetrics'
+    url: 'http://localhost:8086'
+    type: 'influx'
+    insecure_skip_verify: false
+    default: true
+    telegraf: 'telegraf'
+    organization: 'example_org'

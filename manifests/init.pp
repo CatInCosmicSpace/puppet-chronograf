@@ -5,6 +5,8 @@
 class chronograf (
   String $key_resource = '',
   String $resource = '',
+  Hash $keys = {},
+  Hash $repositories = {},
   String $software = 'influxdata',
   Enum['present', 'absent'] $gpg_manage = 'present',
   String $gpg_id = '05CE15085FC09D18E99EFB22684A14CF2582E0C5',
@@ -36,7 +38,7 @@ class chronograf (
 
   String $service_defaults = '/etc/default/chronograf',
   Enum['present', 'absent'] $service_defaults_manage = 'present',
-  String $service_default_template = 'chronograf/service-defaults.erb',
+  String $service_defaults_template = 'chronograf/service-defaults.erb',
   String $service_definition = '/lib/systemd/system/chronograf.service',
   Enum['present', 'absent'] $service_definition_manage = 'present',
   String $service_definition_template = 'chronograf/systemd.service.erb',
