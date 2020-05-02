@@ -4,7 +4,9 @@
 #   include chronograf::repo
 class chronograf::repo (
   String $key_resource = $chronograf::key_resource,
+  Hash $keys = $chronograf::keys,
   String $resource = $chronograf::resource,
+  Hash $repositories = $chronograf::repositories,
   Boolean $manage_repo = $chronograf::manage_repo,
 ){
   if $manage_repo {

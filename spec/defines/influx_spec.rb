@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'chronograf::connection::kapacitor' do
+describe 'chronograf::connection::influx' do
   let(:title) { 'namevar' }
   let(:params) do
     {

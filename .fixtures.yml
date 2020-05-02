@@ -6,6 +6,9 @@ fixtures:
     apt:
       repo: 'puppetlabs/apt'
       ref: '6.3.0'
+    concat:
+      repo: 'puppetlabs/concat'
+      ref: '5.3.0'
     stdlib:
       repo: 'puppetlabs/stdlib'
       ref: '5.2.0'
@@ -15,5 +18,3 @@ fixtures:
     yumrepo_core:
       repo: 'puppetlabs/yumrepo_core'
       ref: '1.0.6'
-  symlinks:
-    chronograf: '#{source_dir}'

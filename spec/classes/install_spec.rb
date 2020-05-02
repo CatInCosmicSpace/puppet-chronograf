@@ -7,7 +7,22 @@ describe 'chronograf::install' do
     context "on #{os}" do
       let(:facts) { os_facts }
 
-      it { is_expected.to compile }
+      let :params do
+        {
+          package: 'chronograf',
+          package_manage: 'present',
+          group: 'chronograf',
+          group_manage: 'present',
+          group_system: true,
+          user: 'chronograf',
+          user_manage: 'present',
+          user_system: true,
+          user_manage_home: true,
+          user_home: '/var/lib/',
+        }
+      end
+
+      it { is_expected.to compile.with_all_deps }
     end
   end
 end
