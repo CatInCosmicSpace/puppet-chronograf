@@ -26,6 +26,8 @@ class chronograf (
 
   String $package= 'chronograf',
   Enum['present', 'absent'] $package_manage= 'present',
+  String $package_name = 'chronograf',
+  String $ensure_package = 'present',
 
   String $group = 'chronograf',
   Enum['present', 'absent'] $group_manage = 'present',

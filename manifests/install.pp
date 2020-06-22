@@ -14,9 +14,6 @@ class chronograf::install (
   Boolean $user_manage_home = $chronograf::user_manage_home,
   String $user_home = $chronograf::user_home,
 ){
-  package { $package:
-    ensure => $package_manage
-  }
 
   group { $group:
     ensure => $group_manage,
