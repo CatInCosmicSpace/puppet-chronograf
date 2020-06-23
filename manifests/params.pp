@@ -26,7 +26,7 @@ class chronograf::params (
   String $service_definition_template = 'chronograf/systemd.service.erb',
   String $service_name = 'chronograf',
   String $service_provider = 'systemd',
-  Enum['running', 'absent'] $service_ensure = 'running',
+  Enum['running', 'stopped'] $service_ensure = 'running',
   Boolean $service_enable = true,
   Boolean $service_has_status = true,
   Boolean $service_has_restart = true,

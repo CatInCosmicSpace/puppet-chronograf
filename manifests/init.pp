@@ -26,7 +26,7 @@ class chronograf (
   String $service_definition_template = $chronograf::params::service_definition_template,
   String $service_name = $chronograf::params::service_name,
   String $service_provider = $chronograf::params::service_provider,
-  Enum['running', 'absent'] $service_ensure = $chronograf::params::service_ensure,
+  Enum['running', 'stopped'] $service_ensure = $chronograf::params::service_ensure,
   Boolean $service_enable = $chronograf::params::service_enable,
   Boolean $service_has_status = $chronograf::params::service_has_status,
   Boolean $service_has_restart = $chronograf::params::service_has_restart,

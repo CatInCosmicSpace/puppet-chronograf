@@ -4,7 +4,7 @@
 #   include chronograf::service
 class chronograf::service (
   String $service_name = $chronograf::service_name,
-  Enum['running', 'absent'] $service_ensure = $chronograf::service_ensure,
+  Enum['running', 'stopped'] $service_ensure = $chronograf::service_ensure,
   Boolean $service_enable = $chronograf::service_enable,
   Boolean $service_has_status = $chronograf::service_has_status,
   Boolean $service_has_restart = $chronograf::service_has_restart,
