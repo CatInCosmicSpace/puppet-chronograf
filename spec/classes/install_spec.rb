@@ -9,8 +9,6 @@ describe 'chronograf::install' do
 
       let :params do
         {
-          package: 'chronograf',
-          package_manage: 'present',
           group: 'chronograf',
           group_manage: 'present',
           group_system: true,

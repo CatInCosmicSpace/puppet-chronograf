@@ -6,6 +6,8 @@ class chronograf::repo (
   Boolean $manage_repo = $chronograf::manage_repo,
   String $ensure_package = $chronograf::ensure_package,
   String $package_name = $chronograf::package_name,
+  String $repo_location = $chronograf::repo_location,
+  String $repo_type = $chronograf::repo_type,
 ){
 
   if $facts['os']['family'] == 'Debian' {
@@ -28,4 +30,18 @@ class chronograf::repo (
     }
   }
 
+  if $facts['os']['name'] == 'CentOS' {
+    if $manage_repo {
+      yumrepo { 'influxdata':
+        name     => 'influxdata',
+        descr    => 'InfluxData Repository',
+        enabled  => 1,
+        baseurl  => "${repo_location}rhel/${facts['os']['release']['major']}/${facts['os']['architecture']}/${repo_type}",
+        gpgkey   => "${repo_location}influxdb.key",
+        gpgcheck => 1,
+      }
+
+      Yumrepo['influxdata'] -> Package[$package_name]
+    }
+  }
 }

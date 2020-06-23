@@ -3,8 +3,6 @@
 # @example
 #   include chronograf::install
 class chronograf::install (
-  String $package= $chronograf::package,
-  Enum['present', 'absent'] $package_manage = $chronograf::package_manage,
   String $group = $chronograf::group,
   Enum['present', 'absent'] $group_manage = $chronograf::group_manage,
   Boolean $group_system = $chronograf::group_system,

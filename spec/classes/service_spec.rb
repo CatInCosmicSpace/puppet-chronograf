@@ -10,7 +10,7 @@ describe 'chronograf::service' do
       let :params do
         {
           service_name: 'chronograf',
-          service_manage: 'running',
+          service_ensure: 'running',
           service_enable: true,
           service_has_status: true,
           service_has_restart: true,

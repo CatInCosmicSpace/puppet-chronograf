@@ -1,17 +1,2 @@
 ---
-# - GPG key resource and resource-----------------------------------------------
-chronograf::key_resource: ''
-chronograf::resource: 'yumrepo'
-chronograf::repos_location: 'https://repos.influxdata.com/rhel/%{::os.release.major}/%{::os.architecture}/stable'
-
 chronograf::service_definition: '/etc/systemd/system/chronograf.service'
-
-# - YUM repository settings ----------------------------------------------------
-chronograf::repositories:
-  "%{lookup('chronograf::software')}":
-    ensure: "%{lookup('chronograf::repos_manage')}"
-    enabled: "%{lookup('chronograf::repos_enable')}"
-    descr: "%{lookup('chronograf::repos_comment')}"
-    baseurl: "%{lookup('chronograf::repos_location')}"
-    gpgcheck: "%{lookup('chronograf::repos_gpgcheck')}"
-    gpgkey: "%{lookup('chronograf::gpg_source')}"

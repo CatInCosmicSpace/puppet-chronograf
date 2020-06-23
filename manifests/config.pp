@@ -38,11 +38,11 @@ class chronograf::config (
       content => template($service_definition_template),
   }
 
-file { $resources_path:
-  ensure => $resources_path_manage,
-  owner  => 'root',
-  group  => 'root',
-  mode   => '0755',
-}
+  file { $resources_path:
+    ensure => $resources_path_manage,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+  }
 
 }
