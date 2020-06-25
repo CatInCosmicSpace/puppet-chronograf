@@ -10,10 +10,8 @@ describe 'chronograf::install' do
       let :params do
         {
           group: 'chronograf',
-          group_manage: 'present',
           group_system: true,
           user: 'chronograf',
-          user_manage: 'present',
           user_system: true,
           user_manage_home: true,
           user_home: '/var/lib/',

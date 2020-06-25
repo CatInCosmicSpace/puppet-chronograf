@@ -10,10 +10,8 @@ class chronograf (
   String $repo_type = $chronograf::params::repo_type,
 
   String $group = $chronograf::params::group,
-  Enum['present', 'absent'] $group_manage = $chronograf::params::group_manage,
   Boolean $group_system = $chronograf::params::group_system,
   String $user = $chronograf::params::user,
-  Enum['present', 'absent'] $user_manage = $chronograf::params::user_manage,
   Boolean $user_system = $chronograf::params::user_system,
   Boolean $user_manage_home = $chronograf::params::user_manage_home,
   String $user_home = $chronograf::params::user_home,

@@ -10,10 +10,8 @@ class chronograf::params (
   String $repo_type = 'stable',
 
   String $group = 'chronograf',
-  Enum['present', 'absent'] $group_manage = 'present',
   Boolean $group_system = true,
   String $user = 'chronograf',
-  Enum['present', 'absent'] $user_manage = 'present',
   Boolean $user_system = true,
   Boolean $user_manage_home = true,
   String $user_home = '/var/lib/',
