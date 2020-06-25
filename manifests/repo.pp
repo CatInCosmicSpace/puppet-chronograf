@@ -4,7 +4,7 @@
 #   include chronograf::repo
 class chronograf::repo (
   Boolean $manage_repo = $chronograf::manage_repo,
-  String $ensure_package = $chronograf::ensure_package,
+  String $ensure = $chronograf::ensure,
   String $package_name = $chronograf::package_name,
   String $repo_location = $chronograf::repo_location,
   String $repo_type = $chronograf::repo_type,
@@ -26,7 +26,7 @@ class chronograf::repo (
     include apt
     Class['::apt::update'] -> Package[$package_name]
     package { $package_name:
-      ensure => $ensure_package,
+      ensure => $ensure,
     }
   }
 

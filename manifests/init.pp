@@ -5,7 +5,7 @@
 class chronograf (
   Boolean $manage_repo = $chronograf::params::manage_repo,
   String $package_name = $chronograf::params::package_name,
-  String $ensure_package = $chronograf::params::ensure_package,
+  String $ensure = $chronograf::params::ensure,
   String $repo_location = $chronograf::params::repo_location,
   String $repo_type = $chronograf::params::repo_type,
 
@@ -19,10 +19,8 @@ class chronograf (
   String $user_home = $chronograf::params::user_home,
 
   String $service_defaults = $chronograf::params::service_defaults,
-  Enum['present', 'absent'] $service_defaults_manage = $chronograf::params::service_defaults_manage,
   String $service_defaults_template = $chronograf::params::service_defaults_template,
   String $service_definition = $chronograf::params::service_definition,
-  Enum['present', 'absent'] $service_definition_manage = $chronograf::params::service_definition_manage,
   String $service_definition_template = $chronograf::params::service_definition_template,
   String $service_name = $chronograf::params::service_name,
   String $service_provider = $chronograf::params::service_provider,
@@ -39,7 +37,6 @@ class chronograf (
   String $canned_path = $chronograf::params::canned_path,
   String $protoboards_path = $chronograf::params::protoboards_path,
   String $resources_path = $chronograf::params::resources_path,
-  Enum['directory', 'absent'] $resources_path_manage = $chronograf::params::resources_path_manage,String $basepath = '',
   String $status_feed_url = $chronograf::params::status_feed_url,
 
   Hash $connection_influx = $chronograf::params::connection_influx,

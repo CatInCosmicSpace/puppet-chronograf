@@ -5,7 +5,7 @@
 class chronograf::params (
   Boolean $manager_repo = true,
   String $package_name = 'chronograf',
-  String $ensure_package = 'present',
+  String $ensure = 'present',
   String $repo_location = 'https://repos.influxdata.com/',
   String $repo_type = 'stable',
 
@@ -19,10 +19,8 @@ class chronograf::params (
   String $user_home = '/var/lib/',
 
   String $service_defaults = '/etc/default/chronograf',
-  Enum['present', 'absent'] $service_defaults_manage = 'present',
   String $service_defaults_template = 'chronograf/service-defaults.erb',
   String $service_definition = '/lib/systemd/system/chronograf.service',
-  Enum['present', 'absent'] $service_definition_manage = 'present',
   String $service_definition_template = 'chronograf/systemd.service.erb',
   String $service_name = 'chronograf',
   String $service_provider = 'systemd',
@@ -39,7 +37,6 @@ class chronograf::params (
   String $canned_path = '/usr/share/chronograf/canned',
   String $protoboards_path = '/usr/share/chronograf/protoboards',
   String $resources_path = '/usr/share/chronograf/resources',
-  Enum['directory', 'absent'] $resources_path_manage = 'directory',
   String $basepath = '',
   String $status_feed_url = 'https://www.influxdata.com/feed/json',
 

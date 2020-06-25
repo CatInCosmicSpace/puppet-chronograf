@@ -4,13 +4,10 @@
 #   include chronograf::config
 class chronograf::config (
   String $service_defaults = $chronograf::service_defaults,
-  Enum['present', 'absent'] $service_defaults_manage = $chronograf::service_defaults_manage,
   String $service_defaults_template = $chronograf::service_defaults_template,
   String $service_definition = $chronograf::service_definition,
-  Enum['present', 'absent'] $service_definition_manage = $chronograf::service_definition_manage,
   String $service_definition_template = $chronograf::service_definition_template,
   String $resources_path = $chronograf::resources_path,
-  Enum['directory', 'absent'] $resources_path_manage = $chronograf::resources_path_manage,
   String $user = $chronograf::user,
   String $group = $chronograf::group,
   String $host = $chronograf::host,
@@ -23,7 +20,7 @@ class chronograf::config (
 ){
 
   file { $service_defaults:
-    ensure  => $service_defaults_manage,
+    ensure  =>  present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
@@ -31,7 +28,7 @@ class chronograf::config (
   }
 
   -> file { $service_definition:
-      ensure  => $service_definition_manage,
+      ensure  => present,
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
@@ -39,7 +36,7 @@ class chronograf::config (
   }
 
   file { $resources_path:
-    ensure => $resources_path_manage,
+    ensure =>  directory,
     owner  => 'root',
     group  => 'root',
     mode   => '0755',
