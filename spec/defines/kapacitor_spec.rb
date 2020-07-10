@@ -10,8 +10,8 @@ describe 'chronograf::connection::kapacitor' do
       let(:title) { 'MyInfluxDB' }
       let(:params) do
         {
-        connection_template: 'chronograf/influx_connection.erb',
-        resources_path: '/usr/share/chronograf/resources',
+          connection_template: 'chronograf/influx_connection.erb',
+          resources_path: '/usr/share/chronograf/resources',
         }
       end
 

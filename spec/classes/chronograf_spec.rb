@@ -23,7 +23,7 @@ describe 'chronograf' do
         when 'CentOS'
           is_expected.to have_class_count(6)
           is_expected.to have_resource_count(8)
-       end
+        end
       end
     end
   end
