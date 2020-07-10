@@ -3,7 +3,7 @@
 # @example
 #   include chronograf::params
 class chronograf::params (
-  Boolean $manager_repo = true,
+  Boolean $manage_repo = true,
   String $package_name = 'chronograf',
   String $ensure = 'present',
   String $repo_location = 'https://repos.influxdata.com/',
