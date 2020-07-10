@@ -15,9 +15,7 @@ describe 'chronograf::service' do
           service_has_status: true,
           service_has_restart: true,
           service_provider: 'systemd',
-          service_definition: '/lib/systemd/system/chronograf.service',
-          service_defaults: '/etc/default/chronograf',
-          package: 'chronograf',
+          manage_service: true,
         }
       end
 

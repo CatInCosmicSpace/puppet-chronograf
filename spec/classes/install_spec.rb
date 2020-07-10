@@ -18,7 +18,12 @@ describe 'chronograf::install' do
         }
       end
 
-      it { is_expected.to compile.with_all_deps }
+      it do
+        is_expected.to compile.with_all_deps
+        is_expected.to contain_class('chronograf::install')
+        is_expected.to contain_group('chronograf')
+        is_expected.to contain_user('chronograf')
+      end
     end
   end
 end
