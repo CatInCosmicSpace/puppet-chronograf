@@ -15,6 +15,7 @@ describe 'chronograf::repo' do
           'repo_type' => 'stable',
         }
       end
+
       it do
         is_expected.to compile.with_all_deps
         is_expected.to contain_class('chronograf::repo')
