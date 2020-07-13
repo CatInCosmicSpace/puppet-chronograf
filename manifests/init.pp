@@ -42,6 +42,8 @@ class chronograf (
   Hash $connection_kapacitor = $chronograf::params::connection_kapacitor,
   String $kapacitor_connection_template = $chronograf::params::kapacitor_connection_template,
 
+  Hash $defaults_service = $chronograf::defaults_service,
+
 )
   inherits chronograf::params
 {

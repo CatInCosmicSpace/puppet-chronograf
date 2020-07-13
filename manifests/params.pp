@@ -42,6 +42,8 @@ class chronograf::params (
   String $influx_connection_template = 'chronograf/influx_connection.erb',
   Hash $connection_kapacitor = {},
   String $kapacitor_connection_template = 'chronograf/kapacitor_connection.erb',
+
+  Hash $defaults_service = {} ,
 ){
 
 }

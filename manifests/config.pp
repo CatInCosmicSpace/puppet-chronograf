@@ -17,6 +17,7 @@ class chronograf::config (
   String $protoboards_path = $chronograf::protoboards_path,
   String $basepath = $chronograf::basepath,
   String $status_feed_url = $chronograf::status_feed_url,
+  Hash $defaults_service = $chronograf::defaults_service,
 ){
 
   file { $service_defaults:
