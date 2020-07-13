@@ -23,6 +23,7 @@ describe 'chronograf::config' do
           protoboards_path: '/usr/share/chronograf/protoboards',
           basepath: '',
           status_feed_url: 'https://www.influxdata.com/feed/json',
+          defaults_service: {},
         }
       end
 
@@ -52,6 +53,7 @@ describe 'chronograf::config' do
             protoboards_path: '/usr/share/chronograf/protoboards',
             basepath: '',
             status_feed_url: 'https://www.influxdata.com/feed/json',
+            defaults_service: {},
           }
         end
 
