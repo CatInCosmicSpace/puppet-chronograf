@@ -21,6 +21,14 @@
     {
       "name": "puppetlabs/translate",
       "version_requirement": ">= 1.0.0 < 3.0.0"
+    },
+    {
+      "name": "camptocamp/systemd",
+      "version_requirement": ">= 2.0.0 < 2.9.0"
+    },
+    {
+      "name": "puppetlabs/inifile",
+      "version_requirement": ">= 1.6.0 < 5.0.0"
     }
   ],
   "operatingsystem_support": [

@@ -10,6 +10,8 @@ class chronograf::service (
   Boolean $service_has_restart = $chronograf::service_has_restart,
   String $service_provider = $chronograf::service_provider,
   Boolean $manage_service = $chronograf::manage_service,
+  String $service_definition = $chronograf::service_definition,
+  String $service_defaults = $chronograf::service_defaults,
 ){
   if $manage_service {
     service { $service_name:
@@ -18,7 +20,9 @@ class chronograf::service (
       hasstatus  => $service_has_status,
       hasrestart => $service_has_restart,
       provider   => $service_provider,
+      subscribe  => [ File[$service_definition],
+                      File[$service_defaults]
+                    ]
     }
   }
 }
-

@@ -20,6 +20,8 @@ class chronograf::config (
   Hash $defaults_service = $chronograf::defaults_service,
 ){
 
+  include systemd::systemctl::daemon_reload
+
   file { $service_defaults:
     ensure  =>  present,
     owner   => 'root',
@@ -35,6 +37,7 @@ class chronograf::config (
       mode    => '0644',
       content => template($service_definition_template),
   }
+  ~> Class['systemd::systemctl::daemon_reload']
 
   file { $resources_path:
     ensure =>  directory,

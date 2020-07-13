@@ -56,10 +56,10 @@ class chronograf (
   Class['chronograf::repo'] ~> Class['chronograf::install']
   Class['chronograf::install'] ~> Class['chronograf::config', 'chronograf::service']
 
-  if $notify_service {
-    Class['chronograf::config']
-    ~> Class['chronograf::service']
-  }
+  #if $notify_service {
+  #  Class['chronograf::config']
+  #  ~> Class['chronograf::service']
+  #}
 
 
   $connection_influx.each | $connection, $connection_config | {
