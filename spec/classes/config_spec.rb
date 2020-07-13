@@ -17,11 +17,11 @@ describe 'chronograf::config' do
           user: 'chronograf',
           group: 'chronograf',
           host: '0.0.0.0',
-          port: '8888',
+          port: 8888,
           bolt_path: '/var/lib/chronograf/chronograf-v1.db',
           canned_path: '/usr/share/chronograf/canned',
           protoboards_path: '/usr/share/chronograf/protoboards',
-          basepath: '',
+          basepath: '/usr/share/chronograf/base',
           status_feed_url: 'https://www.influxdata.com/feed/json',
           defaults_service: {},
         }
@@ -31,12 +31,12 @@ describe 'chronograf::config' do
         is_expected.to compile.with_all_deps
         is_expected.to contain_file('/etc/default/chronograf')
         is_expected.to contain_file('/usr/share/chronograf/resources')
-        if facts[:osfamily] == 'Debian'
+        if facts[:os]['family'] == 'Debian'
           is_expected.to contain_file('/lib/systemd/system/chronograf.service')
         end
       end
 
-      context 'on CentOS' do
+      context 'on RedHat' do
         let :params do
           {
             service_defaults: '/etc/default/chronograf',
@@ -47,18 +47,18 @@ describe 'chronograf::config' do
             user: 'chronograf',
             group: 'chronograf',
             host: '0.0.0.0',
-            port: '8888',
+            port: 8888,
             bolt_path: '/var/lib/chronograf/chronograf-v1.db',
             canned_path: '/usr/share/chronograf/canned',
             protoboards_path: '/usr/share/chronograf/protoboards',
-            basepath: '',
+            basepath: '/usr/share/chronograf/base',
             status_feed_url: 'https://www.influxdata.com/feed/json',
             defaults_service: {},
           }
         end
 
         it do
-          if facts[:os]['name'] == 'CentOS'
+          if facts[:os]['family'] == 'RedHat'
             is_expected.to contain_file('/etc/systemd/system/chronograf.service')
           end
         end

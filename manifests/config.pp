@@ -3,20 +3,20 @@
 # @example
 #   include chronograf::config
 class chronograf::config (
-  String $service_defaults = $chronograf::service_defaults,
+  Stdlib::Absolutepath $service_defaults = $chronograf::service_defaults,
   String $service_defaults_template = $chronograf::service_defaults_template,
-  String $service_definition = $chronograf::service_definition,
+  Stdlib::Absolutepath $service_definition = $chronograf::service_definition,
   String $service_definition_template = $chronograf::service_definition_template,
   String $resources_path = $chronograf::resources_path,
   String $user = $chronograf::user,
   String $group = $chronograf::group,
-  String $host = $chronograf::host,
-  String $port = $chronograf::port,
-  String $bolt_path = $chronograf::bolt_path,
-  String $canned_path = $chronograf::canned_path,
-  String $protoboards_path = $chronograf::protoboards_path,
-  String $basepath = $chronograf::basepath,
-  String $status_feed_url = $chronograf::status_feed_url,
+  Stdlib::Host $host = $chronograf::host,
+  Stdlib::Port::Unprivileged $port = $chronograf::port,
+  Stdlib::Absolutepath $bolt_path = $chronograf::bolt_path,
+  Stdlib::Absolutepath $canned_path = $chronograf::canned_path,
+  Stdlib::Absolutepath $protoboards_path = $chronograf::protoboards_path,
+  Optional[Stdlib::Absolutepath] $basepath = $chronograf::basepath,
+  Optional[Stdlib::HTTPSUrl] $status_feed_url = $chronograf::status_feed_url,
   Hash $defaults_service = $chronograf::defaults_service,
 ){
 
@@ -30,7 +30,7 @@ class chronograf::config (
     content => template($service_defaults_template),
   }
 
-  -> file { $service_definition:
+  file { $service_definition:
       ensure  => present,
       owner   => 'root',
       group   => 'root',

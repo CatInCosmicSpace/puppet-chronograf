@@ -9,20 +9,16 @@ describe 'chronograf::install' do
 
       let :params do
         {
-          group: 'chronograf',
-          group_system: true,
-          user: 'chronograf',
-          user_system: true,
-          user_manage_home: true,
-          user_home: '/var/lib/',
+        'ensure' => 'present',
+        'package_name' => 'chronograf',
+        'manage_repo' => false,
         }
       end
 
       it do
         is_expected.to compile.with_all_deps
         is_expected.to contain_class('chronograf::install')
-        is_expected.to contain_group('chronograf')
-        is_expected.to contain_user('chronograf')
+        is_expected.to contain_package('chronograf')
       end
     end
   end

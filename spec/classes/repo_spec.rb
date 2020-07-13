@@ -20,10 +20,11 @@ describe 'chronograf::repo' do
         is_expected.to compile.with_all_deps
         is_expected.to contain_class('chronograf::repo')
         is_expected.to contain_package('chronograf')
-        if facts[:osfamily] == 'Debian'
+
+        case facts[:os]['family']
+        when 'Debian'
           is_expected.to contain_class('apt')
-        end
-        if facts[:os]['name'] == 'CentOS'
+        when 'RedHat'
           is_expected.to contain_yumrepo('influxdata')
         end
       end
