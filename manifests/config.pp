@@ -17,11 +17,11 @@ class chronograf::config (
   Stdlib::Absolutepath $protoboards_path = $chronograf::protoboards_path,
   Optional[Stdlib::Absolutepath] $basepath = $chronograf::basepath,
   Optional[Stdlib::HTTPSUrl] $status_feed_url = $chronograf::status_feed_url,
-  Optional[String] $default_host = $chronograf::default_host,
-  Optional[String] $default_port = $chronograf::default_port,
-  Optional[String] $default_tls_certificate = $chronograf::default_tls_certificate,
-  Optional[String] $default_token_secret = $chronograf::default_token_secret,
-  Optional[String] $default_log_level = $chronograf::default_log_level,
+  Variant[Undef, Enum['UNSET'], Stdlib::Host] $default_host = $chronograf::default_host,
+  Variant[Undef, Enum['UNSET'], Stdlib::Port] $default_port = $chronograf::default_port,
+  Variant[Undef, Enum['UNSET'], String] $default_tls_certificate = $chronograf::default_tls_certificate,
+  Variant[Undef, Enum['UNSET'], String] $default_token_secret = $chronograf::default_token_secret,
+  Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']] $default_log_level = $chronograf::default_log_level,
 ){
 
   include systemd::systemctl::daemon_reload
@@ -34,7 +34,7 @@ class chronograf::config (
     content => template($service_defaults_template),
   }
 
-  if  $default_host != '' {
+  if  $default_host != 'UNSET' {
     augeas { 'set_default_host':
       context => '/files/etc/default/chronograf',
       incl    => '/etc/default/chronograf',
@@ -44,7 +44,7 @@ class chronograf::config (
       ]
     }
   }
-  if $default_port != '' {
+  if $default_port != 'UNSET' {
     augeas { 'set_default_port':
       context => '/files/etc/default/chronograf',
       incl    => '/etc/default/chronograf',
@@ -55,7 +55,7 @@ class chronograf::config (
     }
   }
 
-  if $default_tls_certificate != '' {
+  if $default_tls_certificate != 'UNSET' {
     augeas { 'set_default_tls_certificate':
       context => '/files/etc/default/chronograf',
       incl    => '/etc/default/chronograf',
@@ -66,7 +66,7 @@ class chronograf::config (
     }
   }
 
-  if $default_token_secret != '' {
+  if $default_token_secret != 'UNSET' {
     augeas { 'set_default_token_secret':
       context => '/files/etc/default/chronograf',
       incl    => '/etc/default/chronograf',
@@ -77,7 +77,7 @@ class chronograf::config (
     }
   }
 
-  if $default_log_level != '' {
+  if $default_log_level != 'UNSET' {
     augeas { 'set_default_log_level':
       context => '/files/etc/default/chronograf',
       incl    => '/etc/default/chronograf',

@@ -23,7 +23,11 @@ describe 'chronograf::config' do
           protoboards_path: '/usr/share/chronograf/protoboards',
           basepath: '/usr/share/chronograf/base',
           status_feed_url: 'https://www.influxdata.com/feed/json',
-          defaults_service: {},
+          default_host: 'UNSET',
+          default_port: 'UNSET',
+          default_tls_certificate: 'UNSET',
+          default_token_secret: 'UNSET',
+          default_log_level: 'UNSET',
         }
       end
 
@@ -53,7 +57,11 @@ describe 'chronograf::config' do
             protoboards_path: '/usr/share/chronograf/protoboards',
             basepath: '/usr/share/chronograf/base',
             status_feed_url: 'https://www.influxdata.com/feed/json',
-            defaults_service: {},
+            default_host: 'UNSET',
+            default_port: 'UNSET',
+            default_tls_certificate: 'UNSET',
+            default_token_secret: 'UNSET',
+            default_log_level: 'UNSET',
           }
         end
 

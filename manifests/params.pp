@@ -38,11 +38,11 @@ class chronograf::params (
   Hash $connection_kapacitor = {},
   String $kapacitor_connection_template = 'chronograf/kapacitor_connection.erb',
 
-  Optional[String] $default_host = '',
-  Optional[String] $default_port = '',
-  Optional[String] $default_tls_certificate = '',
-  Optional[String] $default_token_secret = '',
-  Optional[String] $default_log_level = '',
+  Variant[Undef, Enum['UNSET'], Stdlib::Host] $default_host = 'UNSET',
+  Variant[Undef, Enum['UNSET'], Stdlib::Port] $default_port = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_tls_certificate = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_token_secret = 'UNSET',
+  Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']] $default_log_level = 'UNSET',
 ){
 
 }
