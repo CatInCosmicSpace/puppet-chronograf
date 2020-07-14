@@ -9,8 +9,8 @@ describe 'chronograf::install' do
 
       let :params do
         {
-        'ensure' => 'present',
-        'package_name' => 'chronograf',
+          'ensure' => 'present',
+          'package_name' => 'chronograf',
         }
       end
 
