@@ -5,11 +5,17 @@
 class chronograf::install (
   String $ensure = $chronograf::ensure,
   String $package_name = $chronograf::package_name,
-  Boolean $manage_repo = $chronograf::manage_repo,
 ){
-  if ! $manage_repo {
+  case $facts['os']['family'] {
+  'Debian': {
+    include apt
+    Class['::apt::update'] -> Package[$package_name]
     package { $package_name:
       ensure => $ensure,
+    }
+  }
+    default: {
+      # do nothing
     }
   }
 }

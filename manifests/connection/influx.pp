@@ -8,14 +8,14 @@ define chronograf::connection::influx (
   String $id = '10000',
   String $username = 'test',
   String $password = 'test',
-  String $url = 'http://localhost:8086',
+  Stdlib::HTTPUrl $url = 'http://localhost:8086',
   String $type = 'influx',
   Boolean $insecure_skip_verify = false,
   Boolean $default = true,
   String $telegraf = 'telegraf',
   String $organization = 'example_org',
   String $connection_template = $chronograf::influx_connection_template,
-  String $resources_path = $chronograf::resources_path,
+  Stdlib::Absolutepath $resources_path = $chronograf::resources_path,
 ) {
 
   file { "${resources_path}/${connection}.src":

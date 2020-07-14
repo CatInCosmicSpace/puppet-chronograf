@@ -17,16 +17,11 @@ class chronograf::repo (
           comment  => 'InfluxDB repository',
           location => "${repo_location}${facts['os']['name'].downcase}",
           release  => $facts[os][distro][codename],
-          repos    => 'stable',
+          repos    => $repo_type,
           key      => {
             'id'     => '05CE15085FC09D18E99EFB22684A14CF2582E0C5',
             'source' => "${repo_location}influxdb.key",
           },
-        }
-        include apt
-        Class['::apt::update'] -> Package[$package_name]
-        package { $package_name:
-          ensure => $ensure,
         }
       }
     }

@@ -27,7 +27,7 @@ describe 'chronograf::service' do
         end
       end
 
-    context "on RedHat" do
+    context 'on RedHat' do
       let :params do
         {
           service_name: 'chronograf',
@@ -42,12 +42,12 @@ describe 'chronograf::service' do
         }
       end
 
-        it do
-          if facts[:os]['family'] == 'RedHat'
-            is_expected.to contain_service('chronograf').that_subscribes_to(['File[/etc/systemd/system/chronograf.service]'])
-          end
+      it do
+        if facts[:os]['family'] == 'RedHat'
+          is_expected.to contain_service('chronograf').that_subscribes_to(['File[/etc/systemd/system/chronograf.service]'])
         end
       end
+    end
     end
   end
 end

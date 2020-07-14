@@ -23,7 +23,6 @@ class chronograf (
   Boolean $service_has_status = $chronograf::params::service_has_status,
   Boolean $service_has_restart = $chronograf::params::service_has_restart,
   Boolean $manage_service = $chronograf::params::manage_service,
-  Boolean $notify_service = $chronograf::params::notify_service,
 
   Stdlib::Host $host = $chronograf::params::host,
   Stdlib::Port::Unprivileged $port = $chronograf::params::port,
