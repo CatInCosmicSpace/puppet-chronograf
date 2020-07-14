@@ -17,7 +17,11 @@ class chronograf::config (
   Stdlib::Absolutepath $protoboards_path = $chronograf::protoboards_path,
   Optional[Stdlib::Absolutepath] $basepath = $chronograf::basepath,
   Optional[Stdlib::HTTPSUrl] $status_feed_url = $chronograf::status_feed_url,
-  Hash $defaults_service = $chronograf::defaults_service,
+  Optional[String] $default_host = $chronograf::default_host,
+  Optional[String] $default_port = $chronograf::default_port,
+  Optional[String] $default_tls_certificate = $chronograf::default_tls_certificate,
+  Optional[String] $default_token_secret = $chronograf::default_token_secret,
+  Optional[String] $default_log_level = $chronograf::default_log_level,
 ){
 
   include systemd::systemctl::daemon_reload
@@ -28,6 +32,60 @@ class chronograf::config (
     group   => 'root',
     mode    => '0644',
     content => template($service_defaults_template),
+  }
+
+  if  $default_host != '' {
+    augeas { 'set_default_host':
+      context => '/files/etc/default/chronograf',
+      incl    => '/etc/default/chronograf',
+      lens    => 'Shellvars.lns',
+      changes => [
+        "set HOST ${default_host}",
+      ]
+    }
+  }
+  if $default_port != '' {
+    augeas { 'set_default_port':
+      context => '/files/etc/default/chronograf',
+      incl    => '/etc/default/chronograf',
+      lens    => 'Shellvars.lns',
+      changes => [
+        "set PORT ${default_port}",
+      ]
+    }
+  }
+
+  if $default_tls_certificate != '' {
+    augeas { 'set_default_tls_certificate':
+      context => '/files/etc/default/chronograf',
+      incl    => '/etc/default/chronograf',
+      lens    => 'Shellvars.lns',
+      changes => [
+        "set TLS_CERTIFICATE ${default_tls_certificate}",
+      ]
+    }
+  }
+
+  if $default_token_secret != '' {
+    augeas { 'set_default_token_secret':
+      context => '/files/etc/default/chronograf',
+      incl    => '/etc/default/chronograf',
+      lens    => 'Shellvars.lns',
+      changes => [
+        "set TOKEN_SECRET ${default_token_secret}",
+      ]
+    }
+  }
+
+  if $default_log_level != '' {
+    augeas { 'set_default_log_level':
+      context => '/files/etc/default/chronograf',
+      incl    => '/etc/default/chronograf',
+      lens    => 'Shellvars.lns',
+      changes => [
+        "set LOG_LEVEL ${default_log_level}",
+      ]
+    }
   }
 
   file { $service_definition:

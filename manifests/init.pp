@@ -38,7 +38,11 @@ class chronograf (
   Hash $connection_kapacitor = $chronograf::params::connection_kapacitor,
   String $kapacitor_connection_template = $chronograf::params::kapacitor_connection_template,
 
-  Hash $defaults_service = $chronograf::params::defaults_service,
+  Optional[String] $default_host = $chronograf::params::default_host,
+  Optional[String] $default_port = $chronograf::params::default_port,
+  Optional[String] $default_tls_certificate = $chronograf::params::default_tls_certificate,
+  Optional[String] $default_token_secret = $chronograf::params::default_token_secret,
+  Optional[String] $default_log_level = $chronograf::params::default_log_level,
 
 )
   inherits chronograf::params
