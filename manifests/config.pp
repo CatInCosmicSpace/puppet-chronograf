@@ -56,7 +56,7 @@ class chronograf::config (
     'TOKEN_SECRET',
     'LOG_LEVEL',
     'PUBLIC_URL',
-    'ENERIC_CLIENT_ID',
+    'GENERIC_CLIENT_ID',
     'GENERIC_CLIENT_SECRET',
     'GENERIC_AUTH_URL',
     'GENERIC_TOKEN_URL',
