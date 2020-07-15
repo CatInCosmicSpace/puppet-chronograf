@@ -23,7 +23,6 @@ describe 'chronograf::service' do
       it do
         is_expected.to compile.with_all_deps
         is_expected.to contain_class('chronograf::service')
-        is_expected.to contain_service('chronograf').that_subscribes_to(['File[/etc/default/chronograf]'])
         if facts[:os]['family'] == 'Debian'
           is_expected.to contain_service('chronograf').that_subscribes_to(['File[/lib/systemd/system/chronograf.service]'])
         end

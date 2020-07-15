@@ -43,6 +43,21 @@ class chronograf (
   Variant[Undef, Enum['UNSET'], String] $default_tls_certificate = $chronograf::params::default_tls_certificate,
   Variant[Undef, Enum['UNSET'], String] $default_token_secret = $chronograf::params::default_token_secret,
   Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']] $default_log_level = $chronograf::params::default_log_level,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPUrl] $default_public_url = $chronograf::params::default_public_url,
+  Variant[Undef, Enum['UNSET'], String] $default_generic_client_id = $chronograf::params::default_generic_client_id,
+  Variant[Undef, Enum['UNSET'], String] $default_generic_client_secret = $chronograf::params::default_generic_client_secret,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_generic_auth_url = $chronograf::params::default_generic_auth_url,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_generic_token_url = $chronograf::params::default_generic_token_url,
+  Variant[Undef, Enum['UNSET'], Enum['true','false']] $default_use_id_token = $chronograf::params::default_use_id_token,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_jwks_url = $chronograf::params::default_jwks_url,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_generic_api_url = $chronograf::params::default_generic_api_url,
+  Variant[Undef, Enum['UNSET'], String] $default_generic_api_key = $chronograf::params::default_generic_api_key,
+  Variant[Undef, Enum['UNSET'], String] $default_generic_scopes = $chronograf::params::default_generic_scopes,
+  Variant[Undef, Enum['UNSET'], String] $default_generic_domains = $chronograf::params::default_generic_domains,
+  Variant[Undef, Enum['UNSET'], String] $default_generic_name = $chronograf::params::default_generic_name,
+  Variant[Undef, Enum['UNSET'], String] $default_google_client_id = $chronograf::params::default_google_client_id,
+  Variant[Undef, Enum['UNSET'], String] $default_google_client_secret = $chronograf::params::default_google_client_secret,
+  Variant[Undef, Enum['UNSET'], String] $default_google_domains = $chronograf::params::default_google_domains,
 
 )
   inherits chronograf::params

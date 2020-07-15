@@ -43,6 +43,21 @@ class chronograf::params (
   Variant[Undef, Enum['UNSET'], String] $default_tls_certificate = 'UNSET',
   Variant[Undef, Enum['UNSET'], String] $default_token_secret = 'UNSET',
   Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']] $default_log_level = 'UNSET',
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPUrl] $default_public_url = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_generic_client_id = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_generic_client_secret = 'UNSET',
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_generic_auth_url = 'UNSET',
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_generic_token_url = 'UNSET',
+  Variant[Undef, Enum['UNSET'], Enum['true','false']] $default_use_id_token = 'UNSET',
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_jwks_url = 'UNSET',
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_generic_api_url = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_generic_api_key = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_generic_scopes = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_generic_domains = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_generic_name = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_google_client_id = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_google_client_secret = 'UNSET',
+  Variant[Undef, Enum['UNSET'], String] $default_google_domains = 'UNSET',
 ){
 
 }

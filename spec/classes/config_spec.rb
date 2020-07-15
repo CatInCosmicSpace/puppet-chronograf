@@ -28,12 +28,26 @@ describe 'chronograf::config' do
           default_tls_certificate: 'UNSET',
           default_token_secret: 'UNSET',
           default_log_level: 'UNSET',
+          default_public_url: 'UNSET',
+          default_generic_client_id: 'UNSET',
+          default_generic_client_secret: 'UNSET',
+          default_generic_auth_url: 'UNSET',
+          default_generic_token_url: 'UNSET',
+          default_use_id_token: 'UNSET',
+          default_jwks_url: 'UNSET',
+          default_generic_api_url: 'UNSET',
+          default_generic_api_key: 'UNSET',
+          default_generic_scopes: 'UNSET',
+          default_generic_domains: 'UNSET',
+          default_generic_name: 'UNSET',
+          default_google_client_id: 'UNSET',
+          default_google_client_secret: 'UNSET',
+          default_google_domains: 'UNSET',
         }
       end
 
       it do
         is_expected.to compile.with_all_deps
-        is_expected.to contain_file('/etc/default/chronograf')
         is_expected.to contain_file('/usr/share/chronograf/resources')
         if facts[:os]['family'] == 'Debian'
           is_expected.to contain_file('/lib/systemd/system/chronograf.service')
@@ -62,6 +76,21 @@ describe 'chronograf::config' do
             default_tls_certificate: 'UNSET',
             default_token_secret: 'UNSET',
             default_log_level: 'UNSET',
+            default_public_url: 'UNSET',
+            default_generic_client_id: 'UNSET',
+            default_generic_client_secret: 'UNSET',
+            default_generic_auth_url: 'UNSET',
+            default_generic_token_url: 'UNSET',
+            default_use_id_token: 'UNSET',
+            default_jwks_url: 'UNSET',
+            default_generic_api_url: 'UNSET',
+            default_generic_api_key: 'UNSET',
+            default_generic_scopes: 'UNSET',
+            default_generic_domains: 'UNSET',
+            default_generic_name: 'UNSET',
+            default_google_client_id: 'UNSET',
+            default_google_client_secret: 'UNSET',
+            default_google_domains: 'UNSET',
           }
         end
 
