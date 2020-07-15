@@ -10,7 +10,6 @@ describe 'chronograf::config' do
       let :params do
         {
           service_defaults: '/etc/default/chronograf',
-          service_defaults_template: 'chronograf/service-defaults.erb',
           service_definition: '/lib/systemd/system/chronograf.service',
           service_definition_template: 'chronograf/systemd.service.erb',
           resources_path: '/usr/share/chronograf/resources',
@@ -58,7 +57,6 @@ describe 'chronograf::config' do
         let :params do
           {
             service_defaults: '/etc/default/chronograf',
-            service_defaults_template: 'chronograf/service-defaults.erb',
             service_definition: '/etc/systemd/system/chronograf.service',
             service_definition_template: 'chronograf/systemd.service.erb',
             resources_path: '/usr/share/chronograf/resources',

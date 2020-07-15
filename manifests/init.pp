@@ -13,7 +13,6 @@ class chronograf (
   String $user = $chronograf::params::user,
 
   Stdlib::Absolutepath $service_defaults = $chronograf::params::service_defaults,
-  String $service_defaults_template = $chronograf::params::service_defaults_template,
   Stdlib::Absolutepath $service_definition = $chronograf::params::service_definition,
   String $service_definition_template = $chronograf::params::service_definition_template,
   String $service_name = $chronograf::params::service_name,

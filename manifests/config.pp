@@ -4,7 +4,6 @@
 #   include chronograf::config
 class chronograf::config (
   Stdlib::Absolutepath $service_defaults = $chronograf::service_defaults,
-  String $service_defaults_template = $chronograf::service_defaults_template,
   Stdlib::Absolutepath $service_definition = $chronograf::service_definition,
   String $service_definition_template = $chronograf::service_definition_template,
   String $resources_path = $chronograf::resources_path,
@@ -41,14 +40,6 @@ class chronograf::config (
 
   include systemd::systemctl::daemon_reload
 
-#  file { $service_defaults:
-#    ensure  =>  present,
-#    owner   => 'root',
-#    group   => 'root',
-#    mode    => '0644',
-#    content => template($service_defaults_template),
-#  }
-
   $keys = [
     'HOST',
     'PORT',
@@ -77,8 +68,8 @@ class chronograf::config (
 
     if  $value != 'UNSET' {
       augeas { "set_default_${key.downcase}":
-        context => '/files/etc/default/chronograf',
-        incl    => '/etc/default/chronograf',
+        context => "/files${service_defaults}",
+        incl    => $service_defaults,
         lens    => 'Shellvars.lns',
         changes => [
           "set ${key} ${value}",
@@ -102,5 +93,4 @@ class chronograf::config (
     group  => 'root',
     mode   => '0755',
   }
-
 }

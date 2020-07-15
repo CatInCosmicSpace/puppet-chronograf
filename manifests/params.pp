@@ -13,7 +13,6 @@ class chronograf::params (
   String $user = 'chronograf',
 
   Stdlib::Absolutepath $service_defaults = '/etc/default/chronograf',
-  String $service_defaults_template = 'chronograf/service-defaults.erb',
   Stdlib::Absolutepath $service_definition = '/lib/systemd/system/chronograf.service',
   String $service_definition_template = 'chronograf/systemd.service.erb',
   String $service_name = 'chronograf',
