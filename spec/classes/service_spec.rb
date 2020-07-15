@@ -6,6 +6,11 @@ describe 'chronograf::service' do
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
+      let(:pre_condition) do
+        <<-PUPPET
+        file { ['/lib/systemd/system/chronograf.service', '/etc/systemd/system/chronograf.service']: }
+        PUPPET
+      end
       let :params do
         {
           service_name: 'chronograf',
@@ -15,7 +20,6 @@ describe 'chronograf::service' do
           service_has_restart: true,
           service_provider: 'systemd',
           manage_service: true,
-          service_defaults: '/etc/default/chronograf',
           service_definition: '/lib/systemd/system/chronograf.service',
         }
       end
@@ -38,7 +42,6 @@ describe 'chronograf::service' do
             service_has_restart: true,
             service_provider: 'systemd',
             manage_service: true,
-            service_defaults: '/etc/default/chronograf',
             service_definition: '/etc/systemd/system/chronograf.service',
           }
         end

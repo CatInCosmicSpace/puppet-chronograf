@@ -11,7 +11,6 @@ class chronograf::service (
   String $service_provider = $chronograf::service_provider,
   Boolean $manage_service = $chronograf::manage_service,
   Stdlib::Absolutepath $service_definition = $chronograf::service_definition,
-  Stdlib::Absolutepath $service_defaults = $chronograf::service_defaults,
 ){
   if $manage_service {
     service { $service_name:
