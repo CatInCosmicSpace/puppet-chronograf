@@ -18,7 +18,7 @@ class chronograf::config (
   Optional[Stdlib::Absolutepath] $basepath = $chronograf::basepath,
   Optional[Stdlib::HTTPSUrl] $status_feed_url = $chronograf::status_feed_url,
   Variant[Undef, Enum['UNSET'], Stdlib::Host] $default_host = $chronograf::default_host,
-  Variant[Undef, Enum['UNSET'], Stdlib::Port] $default_port = $chronograf::default_port,
+  Variant[Undef, Enum['UNSET'], Stdlib::Port::Unprivileged] $default_port = $chronograf::default_port,
   Variant[Undef, Enum['UNSET'], String] $default_tls_certificate = $chronograf::default_tls_certificate,
   Variant[Undef, Enum['UNSET'], String] $default_token_secret = $chronograf::default_token_secret,
   Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']] $default_log_level = $chronograf::default_log_level,
@@ -34,57 +34,26 @@ class chronograf::config (
     content => template($service_defaults_template),
   }
 
-  if  $default_host != 'UNSET' {
-    augeas { 'set_default_host':
-      context => '/files/etc/default/chronograf',
-      incl    => '/etc/default/chronograf',
-      lens    => 'Shellvars.lns',
-      changes => [
-        "set HOST ${default_host}",
-      ]
-    }
-  }
-  if $default_port != 'UNSET' {
-    augeas { 'set_default_port':
-      context => '/files/etc/default/chronograf',
-      incl    => '/etc/default/chronograf',
-      lens    => 'Shellvars.lns',
-      changes => [
-        "set PORT ${default_port}",
-      ]
-    }
-  }
+  $keys = [
+    'HOST',
+    'PORT',
+    'TLS_CERTIFICATE',
+    'TOKEN_SECRET',
+    'LOG_LEVEL',
+    ]
 
-  if $default_tls_certificate != 'UNSET' {
-    augeas { 'set_default_tls_certificate':
-      context => '/files/etc/default/chronograf',
-      incl    => '/etc/default/chronograf',
-      lens    => 'Shellvars.lns',
-      changes => [
-        "set TLS_CERTIFICATE ${default_tls_certificate}",
-      ]
-    }
-  }
+  $keys.each | $key| {
+    $value = getvar("default_${key.downcase}")
 
-  if $default_token_secret != 'UNSET' {
-    augeas { 'set_default_token_secret':
-      context => '/files/etc/default/chronograf',
-      incl    => '/etc/default/chronograf',
-      lens    => 'Shellvars.lns',
-      changes => [
-        "set TOKEN_SECRET ${default_token_secret}",
-      ]
-    }
-  }
-
-  if $default_log_level != 'UNSET' {
-    augeas { 'set_default_log_level':
-      context => '/files/etc/default/chronograf',
-      incl    => '/etc/default/chronograf',
-      lens    => 'Shellvars.lns',
-      changes => [
-        "set LOG_LEVEL ${default_log_level}",
-      ]
+    if  $value != 'UNSET' {
+      augeas { "set_default_${key.downcase}":
+        context => '/files/etc/default/chronograf',
+        incl    => '/etc/default/chronograf',
+        lens    => 'Shellvars.lns',
+        changes => [
+          "set ${key} ${value}",
+        ]
+      }
     }
   }
 

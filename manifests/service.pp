@@ -21,7 +21,6 @@ class chronograf::service (
       hasrestart => $service_has_restart,
       provider   => $service_provider,
       subscribe  => [ File[$service_definition],
-                      File[$service_defaults]
                     ]
     }
   }

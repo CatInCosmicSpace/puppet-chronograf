@@ -39,7 +39,7 @@ class chronograf (
   String $kapacitor_connection_template = $chronograf::params::kapacitor_connection_template,
 
   Variant[Undef, Enum['UNSET'], Stdlib::Host] $default_host = $chronograf::params::default_host,
-  Variant[Undef, Enum['UNSET'], Stdlib::Port] $default_port = $chronograf::params::default_port,
+  Variant[Undef, Enum['UNSET'], Stdlib::Port::Unprivileged] $default_port = $chronograf::params::default_port,
   Variant[Undef, Enum['UNSET'], String] $default_tls_certificate = $chronograf::params::default_tls_certificate,
   Variant[Undef, Enum['UNSET'], String] $default_token_secret = $chronograf::params::default_token_secret,
   Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']] $default_log_level = $chronograf::params::default_log_level,
