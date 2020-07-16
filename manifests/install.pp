@@ -10,12 +10,13 @@ class chronograf::install (
   'Debian': {
     include apt
     Class['::apt::update'] -> Package[$package_name]
-    package { $package_name:
-      ensure => $ensure,
-    }
   }
     default: {
       # do nothing
     }
   }
+
+    package { $package_name:
+      ensure => $ensure,
+    }
 }

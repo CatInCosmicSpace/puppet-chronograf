@@ -9,8 +9,6 @@ describe 'chronograf::repo' do
       let :params do
         {
           'manage_repo' => true,
-          'package_name' => 'chronograf',
-          'ensure' => 'present',
           'repo_location' => 'https://repos.influxdata.com/',
           'repo_type' => 'stable',
         }
@@ -23,7 +21,6 @@ describe 'chronograf::repo' do
         case facts[:os]['family']
         when 'RedHat'
           is_expected.to contain_yumrepo('influxdata')
-          is_expected.to contain_package('chronograf')
         end
       end
     end

@@ -4,8 +4,6 @@
 #   include chronograf::repo
 class chronograf::repo (
   Boolean $manage_repo = $chronograf::manage_repo,
-  String $ensure = $chronograf::ensure,
-  String $package_name = $chronograf::package_name,
   Stdlib::HTTPSUrl $repo_location = $chronograf::repo_location,
   String $repo_type = $chronograf::repo_type,
 ){
@@ -36,13 +34,10 @@ class chronograf::repo (
           gpgkey   => "${repo_location}influxdb.key",
           gpgcheck => 1,
         }
-        package { $package_name:
-          ensure => $ensure,
-        }
       }
     }
     default: {
-      notice("This os ${facts['os']['family']} is not supported")
+      fail("This os ${facts['os']['family']} is not supported")
     }
   }
 }

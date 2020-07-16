@@ -1,7 +1,7 @@
 {
   "name": "kogitoapp-chronograf",
   "version": "0.1.0",
-  "author": "uwoth",
+  "author": "Kogito UG <hello@kogito.network",
   "summary": "Module to manage Chronograf",
   "license": "Apache-2.0",
   "source": "https://github.com/kogitoapp/puppet-chronograf",
