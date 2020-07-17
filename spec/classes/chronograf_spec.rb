@@ -9,7 +9,7 @@ describe 'chronograf' do
 
       it do
         is_expected.to compile.with_all_deps
-        is_expected.to compile.with_all_deps
+        is_expected.to contain_class('chronograf')
         is_expected.to contain_class('chronograf::repo').that_comes_before('Class[chronograf::install]')
         is_expected.to contain_class('chronograf::install').that_comes_before(['Class[chronograf::config]', 'Class[chronograf::service]'])
 
