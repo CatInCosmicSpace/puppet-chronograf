@@ -27,7 +27,6 @@ class chronograf::repo (
     'RedHat': {
       if $manage_repo {
         yumrepo { 'influxdata':
-          name     => 'influxdata',
           descr    => 'InfluxData Repository',
           enabled  => 1,
           baseurl  => "${repo_location}rhel/${facts['os']['release']['major']}/${facts['os']['architecture']}/${repo_type}",
