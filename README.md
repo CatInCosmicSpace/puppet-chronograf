@@ -23,11 +23,9 @@ Installs, configures and manages [Chronograf](https://github.com/influxdata/chro
 
 Default configuration
 
-- manages GPG key, repository (use `$manage_repo` to deactivate when another influxdata module takes the lead)
+- manages GPG key, repository (`$manage_repo = true` )
 
 - manages package
-
-- manages user and group chronograf
 
 - manages directories and configuration files (referring to templates)
 
@@ -37,28 +35,11 @@ Default configuration
 
 - starts service "chronograf" immediately
 
-- service subscribes to "package", "chronograf.service" and "defaults"
-
 - set up connection to influx and kapacitor upon request, also based on templates
 
   * /usr/share/chronograf/resources/*
 
 ### Setup Requirements
-
--   `puppetlabs/apt`
-    version `>= 2.0.0 < 8.0.0`
-
--   `puppetlabs/concat`
-    version `>= 5.0.0 < 7.0.0`
-
--   `puppetlabs/stdlib`
-    version `>= 4.25.0 < 7.0.0`
-
--   `puppetlabs/translate`
-    version `>= 1.0.0 < 3.0.0`
-
--   `puppet`
-    version `>= 5.5.8 < 7.0.0`
 
 For an extensive list of requirements, see `metadata.json`.
 
@@ -138,15 +119,13 @@ Please see document `REFERENCE.md`.
 
 ## Limitations
 
-   This module uses "Hiera".
-
    For an extensive list of supported operating systems, see `metadata.json`.
 
 ## Development
 
--   pdk-version     1.17.0
--   template-url    pdk-default 1.17.0
--   template-ref    tags/1.17.0-0-g0bc522e
+-   pdk-version     1.18.0
+-   template-url    pdk-default 1.18.0
+-   template-ref    tags/1.18.0-0-g095317c
 
 ## Release Notes/Contributors/Etc.
 
