@@ -16,7 +16,7 @@ describe 'chronograf' do
         case facts[:os]['name']
         when 'Debian'
           is_expected.to have_class_count(10)
-          is_expected.to have_resource_count(21)
+          is_expected.to have_resource_count(20)
         when 'Ubuntu'
           is_expected.to have_class_count(10)
           is_expected.to have_resource_count(20)
