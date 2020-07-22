@@ -14,10 +14,7 @@ describe 'chronograf' do
         is_expected.to contain_class('chronograf::install').that_comes_before(['Class[chronograf::config]', 'Class[chronograf::service]'])
 
         case facts[:os]['name']
-        when 'Debian'
-          is_expected.to have_class_count(10)
-          is_expected.to have_resource_count(20)
-        when 'Ubuntu'
+        when 'Debian', 'Ubuntu'
           is_expected.to have_class_count(10)
           is_expected.to have_resource_count(20)
         when 'CentOS'

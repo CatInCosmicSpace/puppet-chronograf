@@ -12,7 +12,7 @@ class chronograf::repo (
     'Debian': {
       if $manage_repo {
         apt::source { 'influxdata':
-          comment  => 'InfluxDB repository',
+          comment  => 'InfluxData repository',
           location => "${repo_location}${facts['os']['name'].downcase}",
           release  => $facts[os][distro][codename],
           repos    => $repo_type,
