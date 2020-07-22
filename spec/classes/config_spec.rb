@@ -49,8 +49,8 @@ describe 'chronograf::config' do
         is_expected.to compile.with_all_deps
         is_expected.to contain_file('/fubar/resources')
           .with(ensure: 'directory')
-        should_not contain_augeas('set_default_log_level')
-        should_not contain_augeas('default_generic_api_url')
+        is_expected.to_not contain_augeas('set_default_log_level')
+        is_expected.to_not contain_augeas('default_generic_api_url')
         if facts[:os]['family'] == 'Debian'
           is_expected.to contain_file('/lib/systemd/system/chronograf.service')
             .with(ensure: 'present')
@@ -158,9 +158,10 @@ describe 'chronograf::config' do
             default_google_domains: 'UNSET',
           }
         end
-        it 'should have an augeas resource' do
-          should contain_augeas('set_default_log_level')
-          should contain_augeas('set_default_host')
+
+        it 'has augeas resources' do
+          is_expected.to contain_augeas('set_default_log_level')
+          is_expected.to contain_augeas('set_default_host')
         end
       end
     end
