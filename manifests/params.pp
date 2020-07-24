@@ -23,8 +23,6 @@ class chronograf::params (
   Boolean $service_has_restart = true,
   Boolean $manage_service = true,
 
-  Stdlib::Host $host = '0.0.0.0',
-  Stdlib::Port::Unprivileged $port = 8888,
   Stdlib::Absolutepath $bolt_path ='/var/lib/chronograf/chronograf-v1.db',
   Stdlib::Absolutepath $canned_path = '/usr/share/chronograf/canned',
   Stdlib::Absolutepath $protoboards_path = '/usr/share/chronograf/protoboards',

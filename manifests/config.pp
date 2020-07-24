@@ -9,8 +9,6 @@ class chronograf::config (
   String $resources_path = $chronograf::resources_path,
   String $user = $chronograf::user,
   String $group = $chronograf::group,
-  Stdlib::Host $host = $chronograf::host,
-  Stdlib::Port::Unprivileged $port = $chronograf::port,
   Stdlib::Absolutepath $bolt_path = $chronograf::bolt_path,
   Stdlib::Absolutepath $canned_path = $chronograf::canned_path,
   Stdlib::Absolutepath $protoboards_path = $chronograf::protoboards_path,

@@ -23,8 +23,6 @@ class chronograf (
   Boolean $service_has_restart = $chronograf::params::service_has_restart,
   Boolean $manage_service = $chronograf::params::manage_service,
 
-  Stdlib::Host $host = $chronograf::params::host,
-  Stdlib::Port::Unprivileged $port = $chronograf::params::port,
   Stdlib::Absolutepath $bolt_path = $chronograf::params::bolt_path,
   Stdlib::Absolutepath $canned_path = $chronograf::params::canned_path,
   Stdlib::Absolutepath $protoboards_path = $chronograf::params::protoboards_path,

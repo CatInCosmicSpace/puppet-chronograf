@@ -9,8 +9,8 @@ After=network-online.target
 [Service]
 User=<%= @user %>
 Group=<%= @group %>
-Environment="HOST=<%= @host %>"
-Environment="PORT=<%= @port %>"
+Environment="HOST=0.0.0.0"
+Environment="PORT=8888"
 Environment="BOLT_PATH=<%= @bolt_path %>"
 Environment="CANNED_PATH=<%= @canned_path %>"
 Environment="PROTOBOARDS_PATH=<%= @protoboards_path %>"

@@ -15,8 +15,6 @@ describe 'chronograf::config' do
           resources_path: '/fubar/resources',
           user: 'foo',
           group: 'bar',
-          host: '8.7.6.5',
-          port: 8765,
           bolt_path: '/fubar/chronograf-v1.db',
           canned_path: '/fubar/canned',
           protoboards_path: '/fubar/protoboards',
@@ -54,8 +52,6 @@ describe 'chronograf::config' do
             .with(ensure: 'present')
             .with_content(%r{User=foo})
             .with_content(%r{Group=bar})
-            .with_content(%r{Environment=\"HOST=8.7.6.5\"})
-            .with_content(%r{Environment=\"PORT=8765\"})
             .with_content(%r{Environment=\"BOLT_PATH=\/fubar\/chronograf-v1.db\"})
             .with_content(%r{Environment\="PROTOBOARDS_PATH=\/fubar\/protoboards\"})
             .with_content(%r{Environment=\"RESOURCES_PATH=\/fubar\/resources\"})
@@ -72,8 +68,6 @@ describe 'chronograf::config' do
             resources_path: '/barfoot/resources',
             user: 'drill',
             group: 'sergeant',
-            host: '5.4.3.2',
-            port: 5432,
             bolt_path: '/barfoot/chronograf-v1.db',
             canned_path: '/barfoot/canned',
             protoboards_path: '/barfoot/protoboards',
@@ -108,8 +102,6 @@ describe 'chronograf::config' do
               .with(ensure: 'present')
               .with_content(%r{User=drill})
               .with_content(%r{Group=sergeant})
-              .with_content(%r{Environment=\"HOST=5.4.3.2\"})
-              .with_content(%r{Environment=\"PORT=5432\"})
               .with_content(%r{Environment=\"BOLT_PATH=\/barfoot\/chronograf-v1.db\"})
               .with_content(%r{Environment\="PROTOBOARDS_PATH=\/barfoot\/protoboards\"})
               .with_content(%r{Environment=\"RESOURCES_PATH=\/barfoot\/resources\"})
@@ -127,8 +119,6 @@ describe 'chronograf::config' do
             resources_path: '/fubar/resources',
             user: 'foo',
             group: 'bar',
-            host: '8.7.6.5',
-            port: 8765,
             bolt_path: '/fubar/chronograf-v1.db',
             canned_path: '/fubar/canned',
             protoboards_path: '/fubar/protoboards',
