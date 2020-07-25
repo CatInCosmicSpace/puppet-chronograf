@@ -26,7 +26,7 @@ Manages a Chronograf
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 include chronograf
@@ -182,7 +182,7 @@ Default value: `$chronograf::params::host`
 
 ##### `port`
 
-Data type: `Stdlib::Port::Unprivileged`
+Data type: `Stdlib::Port`
 
 
 
@@ -268,165 +268,165 @@ Data type: `String`
 
 Default value: `$chronograf::params::kapacitor_connection_template`
 
-##### `default_host`
+##### `host`
 
-Data type: `Variant[Undef, Enum['UNSET'], Stdlib::Host]`
-
-
-
-Default value: `$chronograf::params::default_host`
-
-##### `default_port`
-
-Data type: `Variant[Undef, Enum['UNSET'], Stdlib::Port::Unprivileged]`
+Data type: `Stdlib::Host`
 
 
 
-Default value: `$chronograf::params::default_port`
+Default value: `$chronograf::params::host`
 
-##### `default_tls_certificate`
+##### `port`
 
-Data type: `Variant[Undef, Enum['UNSET'], String]`
+Data type: `Stdlib::Port`
 
 
 
-Default value: `$chronograf::params::default_tls_certificate`
+Default value: `$chronograf::params::port`
 
-##### `default_token_secret`
+##### `tls_certificate`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::params::default_token_secret`
+Default value: `$chronograf::params::tls_certificate`
 
-##### `default_log_level`
+##### `token_secret`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::params::token_secret`
+
+##### `log_level`
 
 Data type: `Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']]`
 
 
 
-Default value: `$chronograf::params::default_log_level`
+Default value: `$chronograf::params::log_level`
 
-##### `default_public_url`
+##### `public_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPUrl]`
 
 
 
-Default value: `$chronograf::params::default_public_url`
+Default value: `$chronograf::params::public_url`
 
-##### `default_generic_client_id`
-
-Data type: `Variant[Undef, Enum['UNSET'], String]`
-
-
-
-Default value: `$chronograf::params::default_generic_client_id`
-
-##### `default_generic_client_secret`
+##### `generic_client_id`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::params::default_generic_client_secret`
+Default value: `$chronograf::params::generic_client_id`
 
-##### `default_generic_auth_url`
+##### `generic_client_secret`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::params::generic_client_secret`
+
+##### `generic_auth_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 
 
-Default value: `$chronograf::params::default_generic_auth_url`
+Default value: `$chronograf::params::generic_auth_url`
 
-##### `default_generic_token_url`
+##### `generic_token_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 
 
-Default value: `$chronograf::params::default_generic_token_url`
+Default value: `$chronograf::params::generic_token_url`
 
-##### `default_use_id_token`
+##### `use_id_token`
 
 Data type: `Variant[Undef, Enum['UNSET'], Enum['true','false']]`
 
 
 
-Default value: `$chronograf::params::default_use_id_token`
+Default value: `$chronograf::params::use_id_token`
 
-##### `default_jwks_url`
-
-Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
-
-
-
-Default value: `$chronograf::params::default_jwks_url`
-
-##### `default_generic_api_url`
+##### `jwks_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 
 
-Default value: `$chronograf::params::default_generic_api_url`
+Default value: `$chronograf::params::jwks_url`
 
-##### `default_generic_api_key`
+##### `generic_api_url`
 
-Data type: `Variant[Undef, Enum['UNSET'], String]`
-
-
-
-Default value: `$chronograf::params::default_generic_api_key`
-
-##### `default_generic_scopes`
-
-Data type: `Variant[Undef, Enum['UNSET'], String]`
+Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 
 
-Default value: `$chronograf::params::default_generic_scopes`
+Default value: `$chronograf::params::generic_api_url`
 
-##### `default_generic_domains`
+##### `generic_api_key`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::params::default_generic_domains`
+Default value: `$chronograf::params::generic_api_key`
 
-##### `default_generic_name`
-
-Data type: `Variant[Undef, Enum['UNSET'], String]`
-
-
-
-Default value: `$chronograf::params::default_generic_name`
-
-##### `default_google_client_id`
+##### `generic_scopes`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::params::default_google_client_id`
+Default value: `$chronograf::params::generic_scopes`
 
-##### `default_google_client_secret`
-
-Data type: `Variant[Undef, Enum['UNSET'], String]`
-
-
-
-Default value: `$chronograf::params::default_google_client_secret`
-
-##### `default_google_domains`
+##### `generic_domains`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::params::default_google_domains`
+Default value: `$chronograf::params::generic_domains`
+
+##### `generic_name`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::params::generic_name`
+
+##### `google_client_id`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::params::google_client_id`
+
+##### `google_client_secret`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::params::google_client_secret`
+
+##### `google_domains`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::params::google_domains`
 
 ### `chronograf::config`
 
@@ -434,7 +434,7 @@ Manages directories and files; service defaults
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 include chronograf::config
@@ -502,7 +502,7 @@ Default value: `$chronograf::host`
 
 ##### `port`
 
-Data type: `Stdlib::Port::Unprivileged`
+Data type: `Stdlib::Port`
 
 
 
@@ -548,165 +548,165 @@ Data type: `Optional[Stdlib::HTTPSUrl]`
 
 Default value: `$chronograf::status_feed_url`
 
-##### `default_host`
+##### `host`
 
-Data type: `Variant[Undef, Enum['UNSET'], Stdlib::Host]`
-
-
-
-Default value: `$chronograf::default_host`
-
-##### `default_port`
-
-Data type: `Variant[Undef, Enum['UNSET'], Stdlib::Port::Unprivileged]`
+Data type: `Stdlib::Host`
 
 
 
-Default value: `$chronograf::default_port`
+Default value: `$chronograf::host`
 
-##### `default_tls_certificate`
+##### `port`
 
-Data type: `Variant[Undef, Enum['UNSET'], String]`
+Data type: `Stdlib::Port`
 
 
 
-Default value: `$chronograf::default_tls_certificate`
+Default value: `$chronograf::port`
 
-##### `default_token_secret`
+##### `tls_certificate`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::default_token_secret`
+Default value: `$chronograf::tls_certificate`
 
-##### `default_log_level`
+##### `token_secret`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::token_secret`
+
+##### `log_level`
 
 Data type: `Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']]`
 
 
 
-Default value: `$chronograf::default_log_level`
+Default value: `$chronograf::log_level`
 
-##### `default_public_url`
+##### `public_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPUrl]`
 
 
 
-Default value: `$chronograf::default_public_url`
+Default value: `$chronograf::public_url`
 
-##### `default_generic_client_id`
-
-Data type: `Variant[Undef, Enum['UNSET'], String]`
-
-
-
-Default value: `$chronograf::default_generic_client_id`
-
-##### `default_generic_client_secret`
+##### `generic_client_id`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::default_generic_client_secret`
+Default value: `$chronograf::generic_client_id`
 
-##### `default_generic_auth_url`
+##### `generic_client_secret`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::generic_client_secret`
+
+##### `generic_auth_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 
 
-Default value: `$chronograf::default_generic_auth_url`
+Default value: `$chronograf::generic_auth_url`
 
-##### `default_generic_token_url`
+##### `generic_token_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 
 
-Default value: `$chronograf::default_generic_token_url`
+Default value: `$chronograf::generic_token_url`
 
-##### `default_use_id_token`
+##### `use_id_token`
 
 Data type: `Variant[Undef, Enum['UNSET'], Enum['true','false']]`
 
 
 
-Default value: `$chronograf::default_use_id_token`
+Default value: `$chronograf::use_id_token`
 
-##### `default_jwks_url`
-
-Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
-
-
-
-Default value: `$chronograf::default_jwks_url`
-
-##### `default_generic_api_url`
+##### `jwks_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 
 
-Default value: `$chronograf::default_generic_api_url`
+Default value: `$chronograf::jwks_url`
 
-##### `default_generic_api_key`
+##### `generic_api_url`
 
-Data type: `Variant[Undef, Enum['UNSET'], String]`
-
-
-
-Default value: `$chronograf::default_generic_api_key`
-
-##### `default_generic_scopes`
-
-Data type: `Variant[Undef, Enum['UNSET'], String]`
+Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 
 
-Default value: `$chronograf::default_generic_scopes`
+Default value: `$chronograf::generic_api_url`
 
-##### `default_generic_domains`
+##### `generic_api_key`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::default_generic_domains`
+Default value: `$chronograf::generic_api_key`
 
-##### `default_generic_name`
-
-Data type: `Variant[Undef, Enum['UNSET'], String]`
-
-
-
-Default value: `$chronograf::default_generic_name`
-
-##### `default_google_client_id`
+##### `generic_scopes`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::default_google_client_id`
+Default value: `$chronograf::generic_scopes`
 
-##### `default_google_client_secret`
-
-Data type: `Variant[Undef, Enum['UNSET'], String]`
-
-
-
-Default value: `$chronograf::default_google_client_secret`
-
-##### `default_google_domains`
+##### `generic_domains`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 
 
-Default value: `$chronograf::default_google_domains`
+Default value: `$chronograf::generic_domains`
+
+##### `generic_name`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::generic_name`
+
+##### `google_client_id`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::google_client_id`
+
+##### `google_client_secret`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::google_client_secret`
+
+##### `google_domains`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `$chronograf::google_domains`
 
 ### `chronograf::install`
 
@@ -714,7 +714,7 @@ Manages package, group, and user
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 include chronograf::install
@@ -746,7 +746,7 @@ Parameter definiton
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 include chronograf::params
@@ -892,22 +892,6 @@ Data type: `Boolean`
 
 Default value: ``true``
 
-##### `host`
-
-Data type: `Stdlib::Host`
-
-
-
-Default value: `'0.0.0.0'`
-
-##### `port`
-
-Data type: `Stdlib::Port::Unprivileged`
-
-
-
-Default value: `8888`
-
 ##### `bolt_path`
 
 Data type: `Stdlib::Absolutepath`
@@ -988,31 +972,23 @@ Data type: `String`
 
 Default value: `'chronograf/kapacitor_connection.erb'`
 
-##### `default_host`
+##### `host`
 
-Data type: `Variant[Undef, Enum['UNSET'], Stdlib::Host]`
-
-
-
-Default value: `'UNSET'`
-
-##### `default_port`
-
-Data type: `Variant[Undef, Enum['UNSET'], Stdlib::Port::Unprivileged]`
+Data type: `Stdlib::Host`
 
 
 
-Default value: `'UNSET'`
+Default value: `0.0.0.0`
 
-##### `default_tls_certificate`
+##### `port`
 
-Data type: `Variant[Undef, Enum['UNSET'], String]`
+Data type: `Stdlib::Port`
 
 
 
-Default value: `'UNSET'`
+Default value: `8888`
 
-##### `default_token_secret`
+##### `tls_certificate`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1020,7 +996,15 @@ Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 Default value: `'UNSET'`
 
-##### `default_log_level`
+##### `token_secret`
+
+Data type: `Variant[Undef, Enum['UNSET'], String]`
+
+
+
+Default value: `'UNSET'`
+
+##### `log_level`
 
 Data type: `Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']]`
 
@@ -1028,7 +1012,7 @@ Data type: `Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']]`
 
 Default value: `'UNSET'`
 
-##### `default_public_url`
+##### `public_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPUrl]`
 
@@ -1036,7 +1020,7 @@ Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPUrl]`
 
 Default value: `'UNSET'`
 
-##### `default_generic_client_id`
+##### `generic_client_id`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1044,7 +1028,7 @@ Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 Default value: `'UNSET'`
 
-##### `default_generic_client_secret`
+##### `generic_client_secret`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1052,7 +1036,7 @@ Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 Default value: `'UNSET'`
 
-##### `default_generic_auth_url`
+##### `generic_auth_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
@@ -1060,7 +1044,7 @@ Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 Default value: `'UNSET'`
 
-##### `default_generic_token_url`
+##### `generic_token_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
@@ -1068,7 +1052,7 @@ Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 Default value: `'UNSET'`
 
-##### `default_use_id_token`
+##### `use_id_token`
 
 Data type: `Variant[Undef, Enum['UNSET'], Enum['true','false']]`
 
@@ -1076,7 +1060,7 @@ Data type: `Variant[Undef, Enum['UNSET'], Enum['true','false']]`
 
 Default value: `'UNSET'`
 
-##### `default_jwks_url`
+##### `jwks_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
@@ -1084,7 +1068,7 @@ Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 Default value: `'UNSET'`
 
-##### `default_generic_api_url`
+##### `generic_api_url`
 
 Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
@@ -1092,7 +1076,7 @@ Data type: `Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl]`
 
 Default value: `'UNSET'`
 
-##### `default_generic_api_key`
+##### `generic_api_key`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1100,7 +1084,7 @@ Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 Default value: `'UNSET'`
 
-##### `default_generic_scopes`
+##### `generic_scopes`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1108,7 +1092,7 @@ Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 Default value: `'UNSET'`
 
-##### `default_generic_domains`
+##### `generic_domains`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1116,7 +1100,7 @@ Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 Default value: `'UNSET'`
 
-##### `default_generic_name`
+##### `generic_name`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1124,7 +1108,7 @@ Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 Default value: `'UNSET'`
 
-##### `default_google_client_id`
+##### `google_client_id`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1132,7 +1116,7 @@ Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 Default value: `'UNSET'`
 
-##### `default_google_client_secret`
+##### `google_client_secret`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1140,7 +1124,7 @@ Data type: `Variant[Undef, Enum['UNSET'], String]`
 
 Default value: `'UNSET'`
 
-##### `default_google_domains`
+##### `google_domains`
 
 Data type: `Variant[Undef, Enum['UNSET'], String]`
 
@@ -1154,7 +1138,7 @@ Manages gpg key information and repository, if necessary
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 include chronograf::repo
@@ -1194,7 +1178,7 @@ Manages the service
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 include chronograf::service
@@ -1276,7 +1260,7 @@ Manages the connections to influx
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 chronograf::connection::influx { 'connection': }
@@ -1396,7 +1380,7 @@ Manages the connections to kapacitor
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 chronograf::connection::kapacitor { 'connection': }

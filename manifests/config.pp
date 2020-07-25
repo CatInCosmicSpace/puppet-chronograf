@@ -14,26 +14,26 @@ class chronograf::config (
   Stdlib::Absolutepath $protoboards_path = $chronograf::protoboards_path,
   Optional[Stdlib::Absolutepath] $basepath = $chronograf::basepath,
   Optional[Stdlib::HTTPSUrl] $status_feed_url = $chronograf::status_feed_url,
-  Variant[Undef, Enum['UNSET'], Stdlib::Host] $default_host = $chronograf::default_host,
-  Variant[Undef, Enum['UNSET'], Stdlib::Port::Unprivileged] $default_port = $chronograf::default_port,
-  Variant[Undef, Enum['UNSET'], String] $default_tls_certificate = $chronograf::default_tls_certificate,
-  Variant[Undef, Enum['UNSET'], String] $default_token_secret = $chronograf::default_token_secret,
-  Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']] $default_log_level = $chronograf::default_log_level,
-  Variant[Undef, Enum['UNSET'], Stdlib::HTTPUrl] $default_public_url = $chronograf::default_public_url,
-  Variant[Undef, Enum['UNSET'], String] $default_generic_client_id = $chronograf::default_generic_client_id,
-  Variant[Undef, Enum['UNSET'], String] $default_generic_client_secret = $chronograf::default_generic_client_secret,
-  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_generic_auth_url = $chronograf::default_generic_auth_url,
-  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_generic_token_url = $chronograf::default_generic_token_url,
-  Variant[Undef, Enum['UNSET'], Enum['true','false']] $default_use_id_token = $chronograf::default_use_id_token,
-  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_jwks_url = $chronograf::default_jwks_url,
-  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $default_generic_api_url = $chronograf::default_generic_api_url,
-  Variant[Undef, Enum['UNSET'], String] $default_generic_api_key = $chronograf::default_generic_api_key,
-  Variant[Undef, Enum['UNSET'], String] $default_generic_scopes = $chronograf::default_generic_scopes,
-  Variant[Undef, Enum['UNSET'], String] $default_generic_domains = $chronograf::default_generic_domains,
-  Variant[Undef, Enum['UNSET'], String] $default_generic_name = $chronograf::default_generic_name,
-  Variant[Undef, Enum['UNSET'], String] $default_google_client_id = $chronograf::default_google_client_id,
-  Variant[Undef, Enum['UNSET'], String] $default_google_client_secret = $chronograf::default_google_client_secret,
-  Variant[Undef, Enum['UNSET'], String] $default_google_domains = $chronograf::default_google_domains,
+  Stdlib::Host $host = $chronograf::host,
+  Stdlib::Port $port = $chronograf::port,
+  Variant[Undef, Enum['UNSET'], String] $tls_certificate = $chronograf::tls_certificate,
+  Variant[Undef, Enum['UNSET'], String] $token_secret = $chronograf::token_secret,
+  Variant[Undef, Enum['UNSET'], Enum['error','warn','info','debug']] $log_level = $chronograf::log_level,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPUrl] $public_url = $chronograf::public_url,
+  Variant[Undef, Enum['UNSET'], String] $generic_client_id = $chronograf::generic_client_id,
+  Variant[Undef, Enum['UNSET'], String] $generic_client_secret = $chronograf::generic_client_secret,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $generic_auth_url = $chronograf::generic_auth_url,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $generic_token_url = $chronograf::generic_token_url,
+  Variant[Undef, Enum['UNSET'], Enum['true','false']] $use_id_token = $chronograf::use_id_token,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $jwks_url = $chronograf::jwks_url,
+  Variant[Undef, Enum['UNSET'], Stdlib::HTTPSUrl] $generic_api_url = $chronograf::generic_api_url,
+  Variant[Undef, Enum['UNSET'], String] $generic_api_key = $chronograf::generic_api_key,
+  Variant[Undef, Enum['UNSET'], String] $generic_scopes = $chronograf::generic_scopes,
+  Variant[Undef, Enum['UNSET'], String] $generic_domains = $chronograf::generic_domains,
+  Variant[Undef, Enum['UNSET'], String] $generic_name = $chronograf::generic_name,
+  Variant[Undef, Enum['UNSET'], String] $google_client_id = $chronograf::google_client_id,
+  Variant[Undef, Enum['UNSET'], String] $google_client_secret = $chronograf::google_client_secret,
+  Variant[Undef, Enum['UNSET'], String] $google_domains = $chronograf::google_domains,
 ){
 
   include systemd::systemctl::daemon_reload
@@ -62,10 +62,10 @@ class chronograf::config (
   ]
 
   $keys.each | $key| {
-    $value = getvar("default_${key.downcase}")
+    $value = getvar("${key.downcase}")
 
     if  $value != 'UNSET' {
-      augeas { "set_default_${key.downcase}":
+      augeas { "set_${key.downcase}":
         context => "/files${service_defaults}",
         incl    => $service_defaults,
         lens    => 'Shellvars.lns',

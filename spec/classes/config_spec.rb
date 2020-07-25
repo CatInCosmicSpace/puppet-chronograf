@@ -20,26 +20,26 @@ describe 'chronograf::config' do
           protoboards_path: '/fubar/protoboards',
           basepath: '/fubar/base',
           status_feed_url: 'https://www.influxdata.com/feed/json',
-          default_host: 'UNSET',
-          default_port: 'UNSET',
-          default_tls_certificate: 'UNSET',
-          default_token_secret: 'UNSET',
-          default_log_level: 'UNSET',
-          default_public_url: 'UNSET',
-          default_generic_client_id: 'UNSET',
-          default_generic_client_secret: 'UNSET',
-          default_generic_auth_url: 'UNSET',
-          default_generic_token_url: 'UNSET',
-          default_use_id_token: 'UNSET',
-          default_jwks_url: 'UNSET',
-          default_generic_api_url: 'UNSET',
-          default_generic_api_key: 'UNSET',
-          default_generic_scopes: 'UNSET',
-          default_generic_domains: 'UNSET',
-          default_generic_name: 'UNSET',
-          default_google_client_id: 'UNSET',
-          default_google_client_secret: 'UNSET',
-          default_google_domains: 'UNSET',
+          host: '1.2.3.4',
+          port: 8888,
+          tls_certificate: 'UNSET',
+          token_secret: 'UNSET',
+          log_level: 'UNSET',
+          public_url: 'UNSET',
+          generic_client_id: 'UNSET',
+          generic_client_secret: 'UNSET',
+          generic_auth_url: 'UNSET',
+          generic_token_url: 'UNSET',
+          use_id_token: 'UNSET',
+          jwks_url: 'UNSET',
+          generic_api_url: 'UNSET',
+          generic_api_key: 'UNSET',
+          generic_scopes: 'UNSET',
+          generic_domains: 'UNSET',
+          generic_name: 'UNSET',
+          google_client_id: 'UNSET',
+          google_client_secret: 'UNSET',
+          google_domains: 'UNSET',
         }
       end
 
@@ -73,26 +73,26 @@ describe 'chronograf::config' do
             protoboards_path: '/barfoot/protoboards',
             basepath: '/barfoot/chronograf/base',
             status_feed_url: 'https://www.influxdata.com/feed/json',
-            default_host: 'UNSET',
-            default_port: 'UNSET',
-            default_tls_certificate: 'UNSET',
-            default_token_secret: 'UNSET',
-            default_log_level: 'UNSET',
-            default_public_url: 'UNSET',
-            default_generic_client_id: 'UNSET',
-            default_generic_client_secret: 'UNSET',
-            default_generic_auth_url: 'UNSET',
-            default_generic_token_url: 'UNSET',
-            default_use_id_token: 'UNSET',
-            default_jwks_url: 'UNSET',
-            default_generic_api_url: 'UNSET',
-            default_generic_api_key: 'UNSET',
-            default_generic_scopes: 'UNSET',
-            default_generic_domains: 'UNSET',
-            default_generic_name: 'UNSET',
-            default_google_client_id: 'UNSET',
-            default_google_client_secret: 'UNSET',
-            default_google_domains: 'UNSET',
+            host: '1.2.3.4',
+            port: 8888,
+            tls_certificate: 'UNSET',
+            token_secret: 'UNSET',
+            log_level: 'UNSET',
+            public_url: 'UNSET',
+            generic_client_id: 'UNSET',
+            generic_client_secret: 'UNSET',
+            generic_auth_url: 'UNSET',
+            generic_token_url: 'UNSET',
+            use_id_token: 'UNSET',
+            jwks_url: 'UNSET',
+            generic_api_url: 'UNSET',
+            generic_api_key: 'UNSET',
+            generic_scopes: 'UNSET',
+            generic_domains: 'UNSET',
+            generic_name: 'UNSET',
+            google_client_id: 'UNSET',
+            google_client_secret: 'UNSET',
+            google_domains: 'UNSET',
           }
         end
 
@@ -124,45 +124,50 @@ describe 'chronograf::config' do
             protoboards_path: '/fubar/protoboards',
             basepath: '/fubar/base',
             status_feed_url: 'https://www.influxdata.com/feed/json',
-            default_host: '1.2.1.2',
-            default_port: 'UNSET',
-            default_tls_certificate: 'UNSET',
-            default_token_secret: 'UNSET',
-            default_log_level: 'info',
-            default_public_url: 'UNSET',
-            default_generic_client_id: 'UNSET',
-            default_generic_client_secret: 'UNSET',
-            default_generic_auth_url: 'UNSET',
-            default_generic_token_url: 'UNSET',
-            default_use_id_token: 'UNSET',
-            default_jwks_url: 'UNSET',
-            default_generic_api_url: 'UNSET',
-            default_generic_api_key: 'UNSET',
-            default_generic_scopes: 'UNSET',
-            default_generic_domains: 'UNSET',
-            default_generic_name: 'UNSET',
-            default_google_client_id: 'UNSET',
-            default_google_client_secret: 'UNSET',
-            default_google_domains: 'UNSET',
+            host: '1.2.1.2',
+            port: 1234,
+            tls_certificate: 'UNSET',
+            token_secret: 'UNSET',
+            log_level: 'info',
+            public_url: 'UNSET',
+            generic_client_id: 'UNSET',
+            generic_client_secret: 'UNSET',
+            generic_auth_url: 'UNSET',
+            generic_token_url: 'UNSET',
+            use_id_token: 'UNSET',
+            jwks_url: 'UNSET',
+            generic_api_url: 'UNSET',
+            generic_api_key: 'UNSET',
+            generic_scopes: 'UNSET',
+            generic_domains: 'UNSET',
+            generic_name: 'UNSET',
+            google_client_id: 'UNSET',
+            google_client_secret: 'UNSET',
+            google_domains: 'UNSET',
           }
         end
 
         it 'has augeas resources' do
-          is_expected.to contain_augeas('set_default_log_level')
+          is_expected.to contain_augeas('set_log_level')
             .with_context('/files/etc/default/chronograf')
             .with_changes(['set LOG_LEVEL info'])
             .with_incl('/etc/default/chronograf')
             .with_lens('Shellvars.lns')
-          is_expected.to contain_augeas('set_default_host')
+          is_expected.to contain_augeas('set_host')
             .with_context('/files/etc/default/chronograf')
             .with_changes(['set HOST 1.2.1.2'])
+            .with_incl('/etc/default/chronograf')
+            .with_lens('Shellvars.lns')
+            is_expected.to contain_augeas('set_port')
+            .with_context('/files/etc/default/chronograf')
+            .with_changes(['set PORT 1234'])
             .with_incl('/etc/default/chronograf')
             .with_lens('Shellvars.lns')
         end
 
         it 'has no augeas resources' do
-          is_expected.not_to contain_augeas('set_default_google_domains')
-          is_expected.not_to contain_augeas('set_default_generic_api_url')
+          is_expected.not_to contain_augeas('set_google_domains')
+          is_expected.not_to contain_augeas('set_generic_api_url')
         end
       end
     end
