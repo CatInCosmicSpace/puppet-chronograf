@@ -158,7 +158,7 @@ describe 'chronograf::config' do
             .with_changes(['set HOST 1.2.1.2'])
             .with_incl('/etc/default/chronograf')
             .with_lens('Shellvars.lns')
-            is_expected.to contain_augeas('set_port')
+          is_expected.to contain_augeas('set_port')
             .with_context('/files/etc/default/chronograf')
             .with_changes(['set PORT 1234'])
             .with_incl('/etc/default/chronograf')
