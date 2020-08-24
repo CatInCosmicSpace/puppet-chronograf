@@ -7,11 +7,11 @@ define chronograf::connection::kapacitor (
   Enum['present', 'absent'] $ensure = 'present',
   String $id = '10000',
   String $src_id = '10000',
-  String $url =  'http://localhost:9092',
+  Stdlib::HTTPUrl $url =  'http://localhost:9092',
   Boolean $active = true,
   String $organization = 'example_org',
   String $connection_template = $chronograf::kapacitor_connection_template,
-  String $resources_path = $chronograf::resources_path,
+  Stdlib::Absolutepath $resources_path = $chronograf::resources_path,
 ) {
 
   file { "${resources_path}/${connection}.kap":

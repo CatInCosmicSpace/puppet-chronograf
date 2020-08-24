@@ -6,22 +6,52 @@ describe 'chronograf::service' do
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
-
+      let(:pre_condition) do
+        <<-PUPPET
+        file { ['/lib/systemd/system/chronograf.service', '/etc/systemd/system/chronograf.service']: }
+        PUPPET
+      end
       let :params do
         {
           service_name: 'chronograf',
-          service_manage: 'running',
+          service_ensure: 'running',
           service_enable: true,
           service_has_status: true,
           service_has_restart: true,
           service_provider: 'systemd',
+          manage_service: true,
           service_definition: '/lib/systemd/system/chronograf.service',
-          service_defaults: '/etc/default/chronograf',
-          package: 'chronograf',
         }
       end
 
-      it { is_expected.to compile.with_all_deps }
+      it do
+        is_expected.to compile.with_all_deps
+        is_expected.to contain_class('chronograf::service')
+        if facts[:os]['family'] == 'Debian'
+          is_expected.to contain_service('chronograf').that_subscribes_to(['File[/lib/systemd/system/chronograf.service]'])
+        end
+      end
+
+      context 'on RedHat' do
+        let :params do
+          {
+            service_name: 'chronograf',
+            service_ensure: 'running',
+            service_enable: true,
+            service_has_status: true,
+            service_has_restart: true,
+            service_provider: 'systemd',
+            manage_service: true,
+            service_definition: '/etc/systemd/system/chronograf.service',
+          }
+        end
+
+        it do
+          if facts[:os]['family'] == 'RedHat'
+            is_expected.to contain_service('chronograf').that_subscribes_to(['File[/etc/systemd/system/chronograf.service]'])
+          end
+        end
+      end
     end
   end
 end

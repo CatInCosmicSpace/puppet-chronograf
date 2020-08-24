@@ -1,34 +1,25 @@
-# @summary Manages package, group, and user
+# @summary Manages package
 #
 # @example
 #   include chronograf::install
 class chronograf::install (
-  String $package= $chronograf::package,
-  Enum['present', 'absent'] $package_manage = $chronograf::package_manage,
-  String $group = $chronograf::group,
-  Enum['present', 'absent'] $group_manage = $chronograf::group_manage,
-  Boolean $group_system = $chronograf::group_system,
-  String $user = $chronograf::user,
-  Enum['present', 'absent'] $user_manage = $chronograf::user_manage,
-  Boolean $user_system = $chronograf::user_system,
-  Boolean $user_manage_home = $chronograf::user_manage_home,
-  String $user_home = $chronograf::user_home,
-){
-  package { $package:
-    ensure => $package_manage
-  }
+  String $ensure = $chronograf::ensure,
+  String $package_name = $chronograf::package_name,
+) {
+    case $facts['os']['family'] {
+    'Debian': {
+      include apt
+      Class['::apt::update'] -> Package[$package_name]
+    }
+    'RedHat': {
+      Yumrepo['influxdata'] -> Package[$package_name]
+    }
+      default: {
+        # do nothing
+      }
+    }
 
-  group { $group:
-    ensure => $group_manage,
-    system => $group_system,
-  }
-
-  user { $user:
-    ensure     => $user_manage,
-    gid        => $group,
-    home       => "${user_home}${user}",
-    managehome => $user_manage_home,
-    system     => $user_system,
-    require    => Group[$group],
-  }
+    package { $package_name:
+      ensure => $ensure,
+    }
 }

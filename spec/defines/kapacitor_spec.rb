@@ -3,19 +3,34 @@
 require 'spec_helper'
 
 describe 'chronograf::connection::kapacitor' do
-  let(:title) { 'namevar' }
-  let(:params) do
-    {
-      connection_template: 'chronograf/influx_connection.erb',
-      resources_path: '/usr/share/chronograf/resources',
-    }
-  end
-
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
+      let(:title) { 'testkapacitor' }
+      let(:params) do
+        {
+          connection_template: 'chronograf/kapacitor_connection.erb',
+          resources_path: '/usr/share/chronograf/resources',
+          ensure: 'present',
+          id: '10000',
+          src_id: '10000',
+          url: 'http://localhost:9098',
+          active: true,
+          organization: 'specexample.org',
+        }
+      end
 
-      it { is_expected.to compile.with_all_deps }
+      it do
+        is_expected.to compile.with_all_deps
+        is_expected.to contain_chronograf__connection__kapacitor('testkapacitor')
+        is_expected.to contain_file('/usr/share/chronograf/resources/testkapacitor.kap')
+          .with_content(%r{\"id\": \"10000\",\n})
+          .with_content(%r{\"srcID\": \"10000\",\n})
+          .with_content(%r{\"name\": \"testkapacitor\",\n})
+          .with_content(%r{\"url\": \"http:\/\/localhost:9098\",\n})
+          .with_content(%r{\"active\": true,\n})
+          .with_content(%r{\"organization\": \"specexample.org\"\n})
+      end
     end
   end
 end

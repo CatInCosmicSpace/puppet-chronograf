@@ -1,11 +1,8 @@
-# Changelog
+# Change log
 
-All notable changes to this project will be documented in this file.
+This list contains all the changes which went into the project, including issues
+and further references.
 
-## Release 0.1.0
+Items starting with `DEPRECATION` are important deprecation notices.
 
-**Features**
-
-**Bugfixes**
-
-**Known Issues**
+## Unreleased
