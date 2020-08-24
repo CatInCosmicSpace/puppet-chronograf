@@ -23,21 +23,23 @@ Installs, configures and manages [Chronograf](https://github.com/influxdata/chro
 
 Default configuration
 
-- manages GPG key, repository (`$manage_repo = true` )
+- manages GPG key, repository (default: `manage_repo = true` )
+  - default: `repo_location = https://repos.influxdata.com/` and `repo_type = 'stable'`
 
 - manages package
 
 - manages directories and configuration files (referring to templates)
 
-  * /lib/systemd/system/chronograf.service
+  * Debian: `/lib/systemd/system/chronograf.service`
+  * CentOS: `/etc/systemd/system/chronograf.service`
 
-  * /etc/default/chronograf
+  * `/etc/default/chronograf`
 
-- starts service "chronograf" immediately
+- starts service "chronograf" immediately (default: `manage_service = true`)
 
 - set up connection to influx and kapacitor upon request, also based on templates
 
-  * /usr/share/chronograf/resources/*
+  * `/usr/share/chronograf/resources/`
 
 ### Setup Requirements
 
@@ -45,34 +47,71 @@ For an extensive list of requirements, see `metadata.json`.
 
 ### Beginning with chronograf
 
-The module comes along with several configuration files, which you can find in
-`templates`. Change configuration settings in according Hiera level.
+The module comes along with several configuration files (see templates).
+Change configuration settings in according hiera level or via hash.
 
 - `service-defaults.erb`
+    - following keys are supported to be added in single line mode
+      *  host = '0.0.0.0'
+      *  port = 8888
+      *  tls_certificate
+      *  token_secret
+      *  log_level ['error','warn','info','debug']
+      *  public_url
+      *  generic_client_id
+      *  generic_client_secret
+      *  generic_auth_url
+      *  generic_token_url
+      *  use_id_token ['true','false']
+      *  jwks_url
+      *  generic_api_url
+      *  generic_api_key
+      *  generic_scopes
+      *  generic_domains
+      *  generic_name
+      *  google_client_id
+      *  google_client_secret
+      *  google_domains
+
 - `systemd.service.erb`
 
-You will also find in `templates` connection settings to influx and kapacitor.
-Change configuration settings in according Hiera level. Or provide them via a hash.
+- With two defines setup the connection to influx and kapacitor.
 
 Please refer to [Chronograf documentation](https://www.influxdata.com/time-series-platform/chronograf/)
 for the defaults used.
 
 ## Usage
 
-### Without any connections to influx or kapacitor:
+### In combination with other influxdata module
 
-```
-include ::chronograf
-```
-
-### With connections to influx and kapacitor:
+- when one of the other influxdata modules already handles GPG keys and repository
 
 ```
 class { 'chronograf':
+  manage_repo => false,
+}
+```
 
+- when chronograf shall handle GPG keys and repository
+
+```
+class { 'chronograf':
+  manage_repo => true,
+}
+```
+
+### Example
+
+```
+class { 'chronograf':
+  manage_repo     => true,
+  host            => '127.0.0.90',
+  tls_certificate => 'cert-bar',
+  log_level       => 'info',
+  use_id_token    => 'false',
 }
 
-chronograf::connection::influx{'MyInfluxDB':
+chronograf::connection::influx { 'MyInfluxDB':
   ensure               => 'present',
   id                   => '10000',
   username             => 'telegraf',
@@ -85,31 +124,13 @@ chronograf::connection::influx{'MyInfluxDB':
   organization         => 'example_org',
 }
 
-chronograf::connection::kapacitor{'MyKapacitor':
+chronograf::connection::kapacitor { 'MyKapacitor':
   ensure       => 'present',
   id           => '10010',
   src_id       => '10010',
   url          => 'http://localhost:9092',
   active       => true,
   organization => 'example_org',
-}
-```
-
-### In combination with other influxdata module
-
-* when one of the other influxdata modules already handles GPG keys and repository
-
-```
-class { 'chronograf':
-  manage_repo => false,
-}
-```
-
-* when chronograf shall handle GPG keys and repository
-
-```
-class { 'chronograf':
-  manage_repo => true,
 }
 ```
 

@@ -8,7 +8,7 @@
 
 * [`chronograf`](#chronograf): Manages a Chronograf
 * [`chronograf::config`](#chronografconfig): Manages directories and files; service defaults
-* [`chronograf::install`](#chronografinstall): Manages package, group, and user
+* [`chronograf::install`](#chronografinstall): Manages package
 * [`chronograf::params`](#chronografparams): Parameter definiton
 * [`chronograf::repo`](#chronografrepo): Manages gpg key information and repository, if necessary
 * [`chronograf::service`](#chronografservice): Manages the service
@@ -26,7 +26,7 @@ Manages a Chronograf
 
 #### Examples
 
-#####
+##### 
 
 ```puppet
 include chronograf
@@ -171,22 +171,6 @@ Data type: `Boolean`
 
 
 Default value: `$chronograf::params::manage_service`
-
-##### `host`
-
-Data type: `Stdlib::Host`
-
-
-
-Default value: `$chronograf::params::host`
-
-##### `port`
-
-Data type: `Stdlib::Port`
-
-
-
-Default value: `$chronograf::params::port`
 
 ##### `bolt_path`
 
@@ -434,7 +418,7 @@ Manages directories and files; service defaults
 
 #### Examples
 
-#####
+##### 
 
 ```puppet
 include chronograf::config
@@ -491,22 +475,6 @@ Data type: `String`
 
 
 Default value: `$chronograf::group`
-
-##### `host`
-
-Data type: `Stdlib::Host`
-
-
-
-Default value: `$chronograf::host`
-
-##### `port`
-
-Data type: `Stdlib::Port`
-
-
-
-Default value: `$chronograf::port`
 
 ##### `bolt_path`
 
@@ -710,11 +678,11 @@ Default value: `$chronograf::google_domains`
 
 ### `chronograf::install`
 
-Manages package, group, and user
+Manages package
 
 #### Examples
 
-#####
+##### 
 
 ```puppet
 include chronograf::install
@@ -746,7 +714,7 @@ Parameter definiton
 
 #### Examples
 
-#####
+##### 
 
 ```puppet
 include chronograf::params
@@ -978,7 +946,7 @@ Data type: `Stdlib::Host`
 
 
 
-Default value: `0.0.0.0`
+Default value: `'0.0.0.0'`
 
 ##### `port`
 
@@ -1138,7 +1106,7 @@ Manages gpg key information and repository, if necessary
 
 #### Examples
 
-#####
+##### 
 
 ```puppet
 include chronograf::repo
@@ -1178,7 +1146,7 @@ Manages the service
 
 #### Examples
 
-#####
+##### 
 
 ```puppet
 include chronograf::service
@@ -1260,7 +1228,7 @@ Manages the connections to influx
 
 #### Examples
 
-#####
+##### 
 
 ```puppet
 chronograf::connection::influx { 'connection': }
@@ -1380,7 +1348,7 @@ Manages the connections to kapacitor
 
 #### Examples
 
-#####
+##### 
 
 ```puppet
 chronograf::connection::kapacitor { 'connection': }

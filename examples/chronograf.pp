@@ -1,4 +1,4 @@
-include ::chronograf
+#include ::chronograf
 
 # is there another influxdata module, which handles already the gpg key and the repo
 class { 'chronograf':
@@ -6,15 +6,25 @@ class { 'chronograf':
 }
 
 # chronograf handels the gpg key and the repo
-#  change /etc/default/chronograf using default_* parameters (single line update with augeas)
 class { 'chronograf':
-  manage_repo             => true,
-  default_host            => '127.0.0.90',
-  default_tls_certificate => 'foo-cert',
-  default_log_level       => 'info',
-  default_use_id_token    => 'false',
+  manage_repo     => true,
+  host            => '127.0.0.90',
+  tls_certificate => 'cert-bar',
+  log_level       => 'info',
+  use_id_token    => 'false',
 }
 
+# chronograf handels the gpg key and the repo
+#  change /etc/default/chronograf using * parameters (single line update with augeas)
+class { 'chronograf':
+  manage_repo     => true,
+  host            => '127.0.0.90',
+  tls_certificate => 'foo-cert',
+  log_level       => 'info',
+  use_id_token    => 'false',
+}
+
+# setup a connection to influxdb
 chronograf::connection::influx { 'MyInfluxDB':
   ensure               => 'present',
   id                   => '10000',
@@ -28,6 +38,7 @@ chronograf::connection::influx { 'MyInfluxDB':
   organization         => 'example_org',
 }
 
+# setup a connection to kapacitorw
 chronograf::connection::kapacitor { 'MyKapacitor':
   ensure       => 'present',
   id           => '10010',
