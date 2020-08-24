@@ -6,8 +6,7 @@ class chronograf::repo (
   Boolean $manage_repo = $chronograf::manage_repo,
   Stdlib::HTTPSUrl $repo_location = $chronograf::repo_location,
   String $repo_type = $chronograf::repo_type,
-){
-
+) {
   case $facts['os']['family'] {
     'Debian': {
       if $manage_repo {

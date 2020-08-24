@@ -57,9 +57,7 @@ class chronograf (
   Variant[Undef, Enum['UNSET'], String] $google_domains = $chronograf::params::google_domains,
 
 )
-  inherits chronograf::params
-{
-
+  inherits chronograf::params {
   include ::chronograf::repo
   include ::chronograf::install
   include ::chronograf::config
