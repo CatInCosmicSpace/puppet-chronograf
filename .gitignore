@@ -17,6 +17,7 @@
 /pkg/
 /spec/fixtures/manifests/
 /spec/fixtures/modules/
+/spec/fixtures/litmus_inventory.yaml
 /tmp/
 /vendor/
 /convert_report.txt
@@ -25,12 +26,4 @@
 .project
 .envrc
 /inventory.yaml
-/Puppetfile
-/Vagrantfile
-/chronograf.pp
-/modules/
-/scripts/
-/*.log
-.pre-commit-config.yaml
-.config/
-.pdk
+/spec/fixtures/litmus_inventory.yaml

@@ -19,10 +19,6 @@
       "version_requirement": ">= 5.0.0 < 7.0.0"
     },
     {
-      "name": "puppetlabs/inifile",
-      "version_requirement": ">= 1.6.0 < 5.0.0"
-    },
-    {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">= 4.25.0 < 7.0.0"
     },
@@ -65,7 +61,7 @@
       "version_requirement": ">= 5.5.8 < 7.0.0"
     }
   ],
-  "pdk-version": "1.18.1",
-  "template-url": "pdk-default#1.18.1",
-  "template-ref": "tags/1.18.1-0-g3d2e75c"
+  "pdk-version": "2.1.1",
+  "template-url": "pdk-default#2.1.1",
+  "template-ref": "tags/2.1.1-0-g03daa92"
 }
