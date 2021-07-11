@@ -1,7 +1,5 @@
 # Puppet module to manage Chronograf
 
-
-
 #### Table of Contents
 
 1. [Description](#description)
@@ -142,16 +140,10 @@ Please see document `REFERENCE.md`.
 
    For an extensive list of supported operating systems, see `metadata.json`.
 
-## Development
-
--   pdk-version     1.18.1
--   template-url    pdk-default 1.18.1
--   template-ref    tags/1.18.1-0-g3d2e75c
-
 ## Release Notes/Contributors/Etc.
 
 -   module:     kogitoapp-chronograf
--   version:    0.1.0
+-   version:    1.0.0
 -   author:     Kogito UG <hello@kogito.network>
 -   summary:    Module for configuring Chronograf
 -   license:    Apache-2.0
