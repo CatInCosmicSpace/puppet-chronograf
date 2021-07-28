@@ -35,7 +35,6 @@ class chronograf::config (
   Variant[Undef, Enum['UNSET'], String] $google_client_secret = $chronograf::google_client_secret,
   Variant[Undef, Enum['UNSET'], String] $google_domains = $chronograf::google_domains,
 ) {
-  include systemd::systemctl::daemon_reload
 
   $keys = [
     'HOST',
@@ -82,7 +81,6 @@ class chronograf::config (
     mode    => '0644',
     content => template($service_definition_template),
   }
-  ~> Class['systemd::systemctl::daemon_reload']
 
   file { $resources_path:
     ensure => directory,

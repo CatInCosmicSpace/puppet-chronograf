@@ -5,6 +5,11 @@ and further references.
 
 Items starting with `DEPRECATION` are important deprecation notices.
 
+
+## Unreleased
+
+- [Removed] systemctl daemon reload
+
 ## 1.0.0 (2021-07-11)
 
 - [Changed] version to 1.0.0
