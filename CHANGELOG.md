@@ -5,6 +5,9 @@ and further references.
 
 Items starting with `DEPRECATION` are important deprecation notices.
 
+## Unreleased
+
+-   [Fixed] missing build dependencies
 
 ## 1.0.1 (2021-07-28)
 
