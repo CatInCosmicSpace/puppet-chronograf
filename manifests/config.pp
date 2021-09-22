@@ -35,7 +35,6 @@ class chronograf::config (
   Variant[Undef, Enum['UNSET'], String] $google_client_secret = $chronograf::google_client_secret,
   Variant[Undef, Enum['UNSET'], String] $google_domains = $chronograf::google_domains,
 ) {
-
   $keys = [
     'HOST',
     'PORT',
@@ -75,7 +74,7 @@ class chronograf::config (
   }
 
   file { $service_definition:
-    ensure  => present,
+    ensure  => file,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
