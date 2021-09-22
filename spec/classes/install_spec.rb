@@ -23,8 +23,8 @@ describe 'chronograf::install' do
         it do
           is_expected.to compile.with_all_deps
           is_expected.to contain_class('chronograf::install')
-          is_expected.to contain_package('chronograf')
-            .with(ensure: 'present')
+          is_expected.to contain_package('chronograf').
+            with(ensure: 'present')
           case facts[:os]['family']
           when 'Debian'
             is_expected.to contain_class('apt')
@@ -42,8 +42,8 @@ describe 'chronograf::install' do
 
         it do
           is_expected.to compile.with_all_deps
-          is_expected.to contain_package('chronograf')
-            .with(ensure: 'absent')
+          is_expected.to contain_package('chronograf').
+            with(ensure: 'absent')
         end
       end
     end

@@ -27,7 +27,7 @@ describe 'chronograf::repo' do
               'location'   => "https://repos.influxdata.com/#{facts[:os]['name'].downcase}",
               'repos'      => 'stable',
               'key' => { 'id' => '05CE15085FC09D18E99EFB22684A14CF2582E0C5',
-                         'source' => 'https://repos.influxdata.com/influxdb.key' },
+                         'source' => 'https://repos.influxdata.com/influxdb.key' }
             )
           when 'RedHat'
             is_expected.to contain_yumrepo('influxdata').with(
@@ -35,7 +35,7 @@ describe 'chronograf::repo' do
               'enabled'  => 1,
               'baseurl'  => "https://repos.influxdata.com/rhel/#{facts[:os]['release']['major']}/#{facts[:os]['architecture']}/stable",
               'gpgkey'   => 'https://repos.influxdata.com/influxdb.key',
-              'gpgcheck' => 1,
+              'gpgcheck' => 1
             )
           end
         end
