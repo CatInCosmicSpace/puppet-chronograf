@@ -45,17 +45,17 @@ describe 'chronograf::config' do
 
       it do
         is_expected.to compile.with_all_deps
-        is_expected.to contain_file('/fubar/resources')
-          .with(ensure: 'directory')
+        is_expected.to contain_file('/fubar/resources').
+          with(ensure: 'directory')
         if facts[:os]['family'] == 'Debian'
-          is_expected.to contain_file('/lib/systemd/system/chronograf.service')
-            .with(ensure: 'present')
-            .with_content(%r{User=foo})
-            .with_content(%r{Group=bar})
-            .with_content(%r{Environment=\"BOLT_PATH=\/fubar\/chronograf-v1.db\"})
-            .with_content(%r{Environment\="PROTOBOARDS_PATH=\/fubar\/protoboards\"})
-            .with_content(%r{Environment=\"RESOURCES_PATH=\/fubar\/resources\"})
-            .with_content(%r{ExecStart=\/usr\/bin\/chronograf \$CHRONOGRAF_OPTS})
+          is_expected.to contain_file('/lib/systemd/system/chronograf.service').
+            with(ensure: 'present').
+            with_content(%r{User=foo}).
+            with_content(%r{Group=bar}).
+            with_content(%r{Environment=\"BOLT_PATH=\/fubar\/chronograf-v1.db\"}).
+            with_content(%r{Environment\="PROTOBOARDS_PATH=\/fubar\/protoboards\"}).
+            with_content(%r{Environment=\"RESOURCES_PATH=\/fubar\/resources\"}).
+            with_content(%r{ExecStart=\/usr\/bin\/chronograf \$CHRONOGRAF_OPTS})
         end
       end
 
@@ -98,14 +98,14 @@ describe 'chronograf::config' do
 
         it do
           if facts[:os]['family'] == 'RedHat'
-            is_expected.to contain_file('/etc/systemd/system/chronograf.service')
-              .with(ensure: 'present')
-              .with_content(%r{User=drill})
-              .with_content(%r{Group=sergeant})
-              .with_content(%r{Environment=\"BOLT_PATH=\/barfoot\/chronograf-v1.db\"})
-              .with_content(%r{Environment\="PROTOBOARDS_PATH=\/barfoot\/protoboards\"})
-              .with_content(%r{Environment=\"RESOURCES_PATH=\/barfoot\/resources\"})
-              .with_content(%r{ExecStart=\/usr\/bin\/chronograf \$CHRONOGRAF_OPTS})
+            is_expected.to contain_file('/etc/systemd/system/chronograf.service').
+              with(ensure: 'present').
+              with_content(%r{User=drill}).
+              with_content(%r{Group=sergeant}).
+              with_content(%r{Environment=\"BOLT_PATH=\/barfoot\/chronograf-v1.db\"}).
+              with_content(%r{Environment\="PROTOBOARDS_PATH=\/barfoot\/protoboards\"}).
+              with_content(%r{Environment=\"RESOURCES_PATH=\/barfoot\/resources\"}).
+              with_content(%r{ExecStart=\/usr\/bin\/chronograf \$CHRONOGRAF_OPTS})
           end
         end
       end
@@ -148,21 +148,21 @@ describe 'chronograf::config' do
         end
 
         it 'has augeas resources' do
-          is_expected.to contain_augeas('set_log_level')
-            .with_context('/files/etc/default/chronograf')
-            .with_changes(['set LOG_LEVEL info'])
-            .with_incl('/etc/default/chronograf')
-            .with_lens('Shellvars.lns')
-          is_expected.to contain_augeas('set_host')
-            .with_context('/files/etc/default/chronograf')
-            .with_changes(['set HOST 1.2.1.2'])
-            .with_incl('/etc/default/chronograf')
-            .with_lens('Shellvars.lns')
-          is_expected.to contain_augeas('set_port')
-            .with_context('/files/etc/default/chronograf')
-            .with_changes(['set PORT 1234'])
-            .with_incl('/etc/default/chronograf')
-            .with_lens('Shellvars.lns')
+          is_expected.to contain_augeas('set_log_level').
+            with_context('/files/etc/default/chronograf').
+            with_changes(['set LOG_LEVEL info']).
+            with_incl('/etc/default/chronograf').
+            with_lens('Shellvars.lns')
+          is_expected.to contain_augeas('set_host').
+            with_context('/files/etc/default/chronograf').
+            with_changes(['set HOST 1.2.1.2']).
+            with_incl('/etc/default/chronograf').
+            with_lens('Shellvars.lns')
+          is_expected.to contain_augeas('set_port').
+            with_context('/files/etc/default/chronograf').
+            with_changes(['set PORT 1234']).
+            with_incl('/etc/default/chronograf').
+            with_lens('Shellvars.lns')
         end
 
         it 'has no augeas resources' do

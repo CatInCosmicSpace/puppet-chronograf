@@ -23,13 +23,13 @@ describe 'chronograf::connection::kapacitor' do
       it do
         is_expected.to compile.with_all_deps
         is_expected.to contain_chronograf__connection__kapacitor('testkapacitor')
-        is_expected.to contain_file('/usr/share/chronograf/resources/testkapacitor.kap')
-          .with_content(%r{\"id\": \"10000\",\n})
-          .with_content(%r{\"srcID\": \"10000\",\n})
-          .with_content(%r{\"name\": \"testkapacitor\",\n})
-          .with_content(%r{\"url\": \"http:\/\/localhost:9098\",\n})
-          .with_content(%r{\"active\": true,\n})
-          .with_content(%r{\"organization\": \"specexample.org\"\n})
+        is_expected.to contain_file('/usr/share/chronograf/resources/testkapacitor.kap').
+          with_content(%r{\"id\": \"10000\",\n}).
+          with_content(%r{\"srcID\": \"10000\",\n}).
+          with_content(%r{\"name\": \"testkapacitor\",\n}).
+          with_content(%r{\"url\": \"http:\/\/localhost:9098\",\n}).
+          with_content(%r{\"active\": true,\n}).
+          with_content(%r{\"organization\": \"specexample.org\"\n})
       end
     end
   end

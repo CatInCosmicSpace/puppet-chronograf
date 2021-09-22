@@ -28,17 +28,17 @@ describe 'chronograf::connection::influx' do
       it do
         is_expected.to compile.with_all_deps
         is_expected.to contain_chronograf__connection__influx('testinflux')
-        is_expected.to contain_file('/usr/share/chronograf/resources/testinflux.src')
-          .with_content(%r{\"id\": \"10000\",\n})
-          .with_content(%r{\"name\": \"testinflux\",\n})
-          .with_content(%r{\"username\": \"spectest\",\n})
-          .with_content(%r{\"password\": \"spectest\",\n})
-          .with_content(%r{\"url\": \"http:\/\/localhost:8090\",\n})
-          .with_content(%r{\"type\": \"influx\",\n})
-          .with_content(%r{\"insecureSkipVerify\": false,\n})
-          .with_content(%r{\"default\": true,\n})
-          .with_content(%r{\"telegraf\": \"telegraf\",\n})
-          .with_content(%r{\"organization\": \"specexample.org\"\n})
+        is_expected.to contain_file('/usr/share/chronograf/resources/testinflux.src').
+          with_content(%r{\"id\": \"10000\",\n}).
+          with_content(%r{\"name\": \"testinflux\",\n}).
+          with_content(%r{\"username\": \"spectest\",\n}).
+          with_content(%r{\"password\": \"spectest\",\n}).
+          with_content(%r{\"url\": \"http:\/\/localhost:8090\",\n}).
+          with_content(%r{\"type\": \"influx\",\n}).
+          with_content(%r{\"insecureSkipVerify\": false,\n}).
+          with_content(%r{\"default\": true,\n}).
+          with_content(%r{\"telegraf\": \"telegraf\",\n}).
+          with_content(%r{\"organization\": \"specexample.org\"\n})
       end
     end
   end
