@@ -5,6 +5,14 @@ and further references.
 
 Items starting with `DEPRECATION` are important deprecation notices.
 
+## 1.0.3 (2021-09-23)
+
+- [Changed] to support 8.x version of puppetlabs/apt
+- [Added] support for CentOS 8
+- [Added] support for Debian 11
+- [Added] support for Ubuntu 20.04
+- [Improved] CI pipelines that run on PR
+
 ## 1.0.2 (2021-07-28)
 
 - [Changed] version to 1.0.2

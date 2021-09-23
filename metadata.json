@@ -1,6 +1,6 @@
 {
   "name": "kogitoapp-chronograf",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Kogito UG <hello@kogito.network",
   "summary": "Module to manage Chronograf",
   "license": "Apache-2.0",
