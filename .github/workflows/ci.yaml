@@ -23,9 +23,8 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      # TODO enable after fixing the warnings
-      # - name: Run static validations
-      #   run: bundle exec rake validate lint check
+      - name: Run static validations
+        run: bundle exec rake validate lint check
       - name: Run rake rubocop
         run: bundle exec rake rubocop
       - name: Setup Test Matrix

@@ -49,7 +49,7 @@ describe 'chronograf::config' do
           with(ensure: 'directory')
         if facts[:os]['family'] == 'Debian'
           is_expected.to contain_file('/lib/systemd/system/chronograf.service').
-            with(ensure: 'present').
+            with(ensure: 'file').
             with_content(%r{User=foo}).
             with_content(%r{Group=bar}).
             with_content(%r{Environment=\"BOLT_PATH=\/fubar\/chronograf-v1.db\"}).
@@ -99,7 +99,7 @@ describe 'chronograf::config' do
         it do
           if facts[:os]['family'] == 'RedHat'
             is_expected.to contain_file('/etc/systemd/system/chronograf.service').
-              with(ensure: 'present').
+              with(ensure: 'file').
               with_content(%r{User=drill}).
               with_content(%r{Group=sergeant}).
               with_content(%r{Environment=\"BOLT_PATH=\/barfoot\/chronograf-v1.db\"}).

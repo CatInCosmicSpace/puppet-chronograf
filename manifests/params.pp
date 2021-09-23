@@ -55,6 +55,5 @@ class chronograf::params (
   Variant[Undef, Enum['UNSET'], String] $google_client_id = 'UNSET',
   Variant[Undef, Enum['UNSET'], String] $google_client_secret = 'UNSET',
   Variant[Undef, Enum['UNSET'], String] $google_domains = 'UNSET',
-){
-
+) {
 }

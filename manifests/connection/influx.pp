@@ -17,7 +17,6 @@ define chronograf::connection::influx (
   String $connection_template = $chronograf::influx_connection_template,
   Stdlib::Absolutepath $resources_path = $chronograf::resources_path,
 ) {
-
   file { "${resources_path}/${connection}.src":
     ensure  => $ensure,
     owner   => 'root',

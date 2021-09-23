@@ -13,7 +13,6 @@ define chronograf::connection::kapacitor (
   String $connection_template = $chronograf::kapacitor_connection_template,
   Stdlib::Absolutepath $resources_path = $chronograf::resources_path,
 ) {
-
   file { "${resources_path}/${connection}.kap":
     ensure  => $ensure,
     owner   => 'root',
