@@ -5,7 +5,7 @@
 class chronograf::service (
   String $service_name = $chronograf::service_name,
   Stdlib::Ensure::Service $service_ensure = $chronograf::ensure ? {
-    'absent' => 'absent',
+    'absent' => 'stopped',
     default  => $chronograf::service_ensure
   },
   Boolean $service_enable = $chronograf::service_enable,
