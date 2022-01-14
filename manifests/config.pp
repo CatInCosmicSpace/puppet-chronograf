@@ -3,6 +3,7 @@
 # @example
 #   include chronograf::config
 class chronograf::config (
+  String $config_ensure = $chronograf::config_ensure,
   Stdlib::Absolutepath $service_defaults = $chronograf::service_defaults,
   Stdlib::Absolutepath $service_definition = $chronograf::service_definition,
   String $service_definition_template = $chronograf::service_definition_template,
@@ -73,8 +74,18 @@ class chronograf::config (
     }
   }
 
+  $directory_ensure = $config_ensure ? {
+    'absent' => 'absent',
+    default  => 'directory'
+  }
+
+  $file_ensure = $config_ensure ? {
+    'absent' => 'absent',
+    default  => 'present'
+  }
+
   file { $service_definition:
-    ensure  => file,
+    ensure  => $file_ensure,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
@@ -82,7 +93,7 @@ class chronograf::config (
   }
 
   file { $resources_path:
-    ensure => directory,
+    ensure => $directory_ensure,
     owner  => 'root',
     group  => 'root',
     mode   => '0755',
