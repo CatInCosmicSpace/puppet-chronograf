@@ -8,7 +8,10 @@ class chronograf::service (
     'absent' => 'stopped',
     default  => $chronograf::service_ensure
   },
-  Boolean $service_enable = $chronograf::service_enable,
+  Boolean $service_enable = $chronograf::ensure ? {
+    'absent' => false,
+    default  => $chronograf::service_enable
+  },
   Boolean $service_has_status = $chronograf::service_has_status,
   Boolean $service_has_restart = $chronograf::service_has_restart,
   String $service_provider = $chronograf::service_provider,
